@@ -61,12 +61,19 @@ sudo journalctl --since 'today' --no-pager | grep -Ei 'sudo|authentication failu
 
 These commands may require adapting the time range or journal access permissions.
 
+## Evidence integrity and visual presentation
+
+The timestamped log excerpts above are transcribed from the original Kali Linux journal output supplied by the lab operator. A separate phone photograph of the terminal also shows the events. An AI-generated cleaned-up visual reconstruction may be useful for presentation, but **must never be represented as an original screenshot or primary forensic evidence**. If included in this repository, label it clearly as an illustration and retain the original image and log excerpts.
+
+**Image upload pending:** Binary image upload was not available through the connected GitHub text-editing workflow. No screenshot or reconstructed image is claimed to be stored in this repository yet.
+
 ## Evidence to add
 - [x] Timestamped failed authentication excerpt (user-supplied)
 - [x] Timestamped successful `sudo` excerpt (user-supplied)
 - [x] Event timeline based on recorded timestamps
 - [x] Correlation by PID, terminal and account; timestamp timezone not provided
-- [ ] Optional screenshot showing the journal query and matching results
+- [ ] Upload the original terminal photograph as primary visual evidence
+- [ ] Optionally upload the enhanced *AI-generated reconstruction* with an explicit illustration label
 
 ## Lessons learned
 - Authentication failures require context before escalation.
