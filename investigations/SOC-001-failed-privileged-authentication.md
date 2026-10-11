@@ -61,6 +61,12 @@ sudo journalctl --since 'today' --no-pager | grep -Ei 'sudo|authentication failu
 
 These commands may require adapting the time range or journal access permissions.
 
+## Illustrative reconstruction
+
+![AI-generated illustrative reconstruction of the SOC-001 terminal output](../SOC-001-illustrative-reconstruction.png)
+
+*Illustrative reconstruction, AI-generated from a phone photograph of the terminal. This image is not an original screenshot or primary forensic evidence. The timestamped journal excerpts above are the primary documented evidence.*
+
 ## Evidence to add
 - [x] Timestamped failed authentication excerpt (user-supplied)
 - [x] Timestamped successful `sudo` excerpt (user-supplied)
