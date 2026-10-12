@@ -15,12 +15,17 @@ Hands-on, isolated cybersecurity exercises focused on Linux security monitoring,
 | --- | --- | --- | --- |
 | LAB-001 | VirtualBox graphics warning investigation | Completed | Written summary; screenshots/log excerpts pending |
 | SOC-001 | Failed privileged authentication investigation | Completed | Written case report; exact timestamps/log excerpts pending |
-| SOC-002 | Suspicious process investigation | On hold | Not started |
+| SOC-002 | Suspicious process investigation | Completed controlled exercise | User-provided process metadata, ancestry, socket and package checks; no screenshots |
 
 ### SOC-001: Failed privileged authentication
 An authorized test of a failed `sudo` authentication followed by a successful `sudo` action. Linux journal records were reviewed to correlate the sequence and assess whether it represented a real security incident.
 
 [Read the SOC-001 case report](investigations/SOC-001-failed-privileged-authentication.md)
+
+### SOC-002: Suspicious process investigation
+An authorized controlled simulation investigating `sleep 600` and a separate follow-up `sleep 1800` process. The report documents user-provided process metadata, ancestry, executable path, and socket and package check results, with their limitations. Disposition: authorized controlled simulation / no confirmed incident; no evidence of malware in the supplied observations.
+
+[Read the SOC-002 case report](investigations/SOC-002-suspicious-process-investigation.md)
 
 ## Skills practiced
 - Linux command-line administration and journal log review
