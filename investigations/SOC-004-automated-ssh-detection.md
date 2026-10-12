@@ -1,6 +1,6 @@
 # SOC-004 — Automated SSH Authentication Failure Detection
 
-**Status:** Completed controlled exercise; publication retained as a draft PR for user review  
+**Status:** Completed controlled exercise; publication approved by the user on 2026-10-12  
 **Investigation type:** Linux SSH journal analysis and Python detection validation  
 **Environment:** Kali Linux VM `kali-soc-lab`, lab account `analyst`, localhost `127.0.0.1`  
 **Disposition:** Authorized lab activity; no confirmed real-world security incident  
@@ -136,7 +136,7 @@ The report covers the supplied localhost excerpts and fixture results. It does n
 
 **Authorized controlled localhost exercise / no confirmed real-world security incident.** The transferred artifacts pass ten-file integrity verification, both syntax checks, and all four original scenario replays within the documented scope.
 
-The evidence, detector, results, report, and README index are prepared in a separate **draft PR**. The PR remains **unmerged** until the user explicitly approves merging. Approval to publish these artifacts does not authorize merge.
+The evidence, detector, results, report, and README index were prepared in a separate draft PR and held for user review. On **2026-10-12**, the user explicitly approved merging after the ten-file integrity checks, syntax checks, and all four original scenario replays passed. The required approval gate was satisfied before merge.
 
 ## Lessons learned
 

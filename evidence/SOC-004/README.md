@@ -35,4 +35,4 @@ sha256sum -c SHA256SUMS.txt
 
 The manifest covers ten original artifacts; it does not cover the manifest itself or the additional report and validation files. Existing lab hostname/account and loopback values required no additional publication redaction. Hash matching confirms agreement with the supplied manifest, not independent authentication of the original collection.
 
-Read the [SOC-004 investigation report](../../investigations/SOC-004-automated-ssh-detection.md) for the timeline, scenario interpretation, and limitations. The PR remains draft and requires explicit user approval before merge.
+Read the [SOC-004 investigation report](../../investigations/SOC-004-automated-ssh-detection.md) for the timeline, scenario interpretation, and limitations. The user explicitly approved merging this publication on **2026-10-12**, after the draft and its completed verification were presented for review.

@@ -17,7 +17,7 @@ Hands-on, isolated cybersecurity exercises focused on Linux security monitoring,
 | SOC-001 | Failed privileged authentication investigation | Completed | Written case report; exact timestamps/log excerpts pending |
 | SOC-002 | Suspicious process investigation | Completed controlled exercise | Process metadata, ancestry, socket and package checks; four enhanced original photographs |
 | SOC-003 | Network traffic investigation | Completed controlled exercise | 50-packet tcpdump capture, Wireshark protocol and TCP/TLS analysis; ten photographic evidence images |
-| SOC-004 | Automated SSH authentication failure detection | Completed controlled exercise; publication draft | Original localhost journal evidence, labeled synthetic fixtures, saved results, exact detector source, and verified ten-file SHA256 manifest |
+| SOC-004 | Automated SSH authentication failure detection | Completed controlled exercise | Original localhost journal evidence, labeled synthetic fixtures, saved results, exact detector source, and verified ten-file SHA256 manifest |
 
 ### SOC-001: Failed privileged authentication
 An authorized test of a failed `sudo` authentication followed by a successful `sudo` action. Linux journal records were reviewed to correlate the sequence and assess whether it represented a real security incident.
