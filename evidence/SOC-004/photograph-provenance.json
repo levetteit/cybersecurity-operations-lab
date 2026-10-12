@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "recovery_date": "2026-10-12",
-  "source_context": "User upload in the GitHub Portfolio Improvements conversation; the earlier Prepare SOC-004 draft PR chat records viewing the same cached IMG_2551.jpeg attachment.",
+  "source_context": "User upload in the GitHub Portfolio Improvements conversation; the earlier Prepare SOC-004 draft PR chat records viewing the same cached IMG_2551.jpeg attachment. Twenty additional JPEG attachments labeled Photo 1.jpg through Photo 20.jpg were supplied directly in the follow-up request.",
   "recovered_photographs": [
     {
       "path": "evidence/SOC-004/SOC-004-exact-boundary-terminal-original.jpeg",
@@ -10,7 +10,10 @@
       "sha256": "ae4a2a74463d092a9933fe68ea78907e688e4bcbfd40f2b97843dc6d0333d02d",
       "byte_length": 749043,
       "media_type": "image/jpeg",
-      "dimensions_pixels": [1536, 1300],
+      "dimensions_pixels": [
+        1536,
+        1300
+      ],
       "frames": 1,
       "preservation": "Copied byte-for-byte from the cached upload. Two accessible cached copies have identical bytes. Embedded EXIF and ICC data remain intact. No image processing was performed during this recovery.",
       "visible_content": {
@@ -35,16 +38,454 @@
       ],
       "comparison": "Visible fixture records and detector output agree with the preserved exact-boundary fixture and saved result. This is a visual comparison, not a recovered raw terminal session.",
       "authenticity_limit": "The digest identifies the recovered upload bytes. Original camera acquisition, pre-upload edit history, and an unbroken historical chain of custody are not independently authenticated. Displayed synthetic timestamps are not photograph capture times or evidence of live authentication events."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-01-ssh-inactive-original.jpg",
+      "original_upload_filename": "Photo 1.jpg",
+      "accessible_attachment_filename": "1-Photo-1.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 1,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "50ed4e846a305d33ae190ecc8a317c266fd1111a87b24bcf3ae66659289feb61",
+      "byte_length": 250015,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1245
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "SSH service initially inactive",
+      "caption": "The initial systemctl status shows ssh.service loaded but inactive (dead) and disabled.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-02-ssh-started-wildcard-original.jpg",
+      "original_upload_filename": "Photo 2.jpg",
+      "accessible_attachment_filename": "2-Photo-2.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 2,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "cd67a2413d5bb56c1d72c1e908f14d63ae50c34e9ca6f09762d284c0491b8988",
+      "byte_length": 334039,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1137
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "SSH service started with wildcard listeners",
+      "caption": "systemctl start/status shows the service active since 2026-10-12 13:33:54 EDT; its journal records wildcard IPv4 and IPv6 listeners. This precedes loopback restriction.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-03-wildcard-socket-check-original.jpg",
+      "original_upload_filename": "Photo 3.jpg",
+      "accessible_attachment_filename": "3-Photo-3.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 3,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "91aff909a105839dad85b4a12adb02d02bc4ffe9d4702de62fc393c0471a9ac4",
+      "byte_length": 339260,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1120
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Initial wildcard socket check",
+      "caption": "The ss output shows 0.0.0.0:22 and [::]:22 with sshd PID 111930. These are initial wildcard bindings, not the later loopback-only state.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-04-sshd-config-before-change-original.jpg",
+      "original_upload_filename": "Photo 4.jpg",
+      "accessible_attachment_filename": "4-Photo-4.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 4,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "5834941f8cb4fa18e37b209fddaf9fcb5a76f8a56086bbb0148ebc165501ef82",
+      "byte_length": 334540,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1193
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Configuration before the loopback edit",
+      "caption": "GNU nano 9.2 displays sshd_config, its Include directive, and commented ListenAddress defaults. The photograph does not show an active loopback directive.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-05-config-backup-and-syntax-original.jpg",
+      "original_upload_filename": "Photo 5.jpg",
+      "accessible_attachment_filename": "5-Photo-5.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 5,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "1e71eea57f3b84197e14cc21b8e9d6026a1bbaad414e1a97eeede8eea006219c",
+      "byte_length": 300704,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1107
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Configuration backup and syntax check",
+      "caption": "The terminal shows a backup to sshd_config.soc004.bak, an editor invocation, and sshd -t followed by SSH configuration valid. Syntax validity does not establish loopback binding.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-06-effective-wildcard-config-original.jpg",
+      "original_upload_filename": "Photo 6.jpg",
+      "accessible_attachment_filename": "6-Photo-6.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 6,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "7d4839c7ec2b47a3596eeeacb4d0dcbbe2a38611d86b16b2e19194b020982fc0",
+      "byte_length": 334790,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1162
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Effective configuration still wildcard",
+      "caption": "After the syntax check, sshd -T reports [::]:22 and 0.0.0.0:22. The initial edit had not established loopback-only listening.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-07-listenaddress-investigation-original.jpg",
+      "original_upload_filename": "Photo 7.jpg",
+      "accessible_attachment_filename": "7-Photo-7.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 7,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "042da755518a029b9c066d971b9ba9d4ca1f819bf24c278d8bdb60cd5e3ca79e",
+      "byte_length": 302511,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1179
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "ListenAddress investigation",
+      "caption": "The terminal shows searches for active ListenAddress directives and numbered commented defaults in sshd_config, while the effective configuration above still shows wildcard addresses.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-08-loopback-binding-verified-original.jpg",
+      "original_upload_filename": "Photo 8.jpg",
+      "accessible_attachment_filename": "8-Photo-8.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 8,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "6c8abe26e7c88830f48f5b0c0b4d7b543700a7eefd425392e715650c0cbb6a48",
+      "byte_length": 284306,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1126
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Loopback configuration and socket verified",
+      "caption": "The terminal shows an active ListenAddress 127.0.0.1 directive, successful sshd -t, effective 127.0.0.1:22, service restart, and an ss listener at 127.0.0.1:22 with sshd PID 122186.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-09-ssh-service-journal-original.jpg",
+      "original_upload_filename": "Photo 9.jpg",
+      "accessible_attachment_filename": "9-Photo-9.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 9,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "91f658f27f57ca98003d6deff3f8aa8259edefb4f7ebf859683e494278d39cf4",
+      "byte_length": 353875,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1129
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "SSH service restart journal",
+      "caption": "journalctl displays the initial wildcard startup at 13:33:54 and restart at 13:54:58 with a listener on 127.0.0.1 port 22. The short timestamp display omits an explicit offset.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-10-first-localhost-login-failure-original.jpg",
+      "original_upload_filename": "Photo 10.jpg",
+      "accessible_attachment_filename": "10-Photo-10.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 10,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "209113448724367019fe63408badc291f3dbaebdf05f97f3081179fbb5aa472e",
+      "byte_length": 402070,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1156
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "First localhost login failure",
+      "caption": "The localhost password-only SSH attempt shows host-key acceptance, a password prompt with no password value displayed, and Permission denied (publickey,password).",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-11-first-failure-journal-original.jpg",
+      "original_upload_filename": "Photo 11.jpg",
+      "accessible_attachment_filename": "11-Photo-11.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 11,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "4a551287697872e7e71ab6df347a1609fde1551ae6d71b28fd0411720a0d0434",
+      "byte_length": 370933,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1075
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "First failure journal context",
+      "caption": "Filtered journal output shows password/PAM failure at 13:58:18 and failed password plus pre-authentication closure at 13:58:20, for analyst from 127.0.0.1 port 33040.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-12-first-failure-export-original.jpg",
+      "original_upload_filename": "Photo 12.jpg",
+      "accessible_attachment_filename": "12-Photo-12.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 12,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "991b600af398ccb1b4d18a11499ad3d6b802ba9f29f4781fbdc8ac299a2136e7",
+      "byte_length": 376871,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1163
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Bounded first-failure journal export",
+      "caption": "The terminal shows journalctl --since 2026-10-12 13:57:00 --until 2026-10-12 14:00:00 with short-iso output redirected to ssh-first-failure.log, then wc/cat displaying four records with -04:00 timestamps.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-13-first-failure-hash-and-attempts-original.jpg",
+      "original_upload_filename": "Photo 13.jpg",
+      "accessible_attachment_filename": "13-Photo-13.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 13,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "d5c878a2b384bbe2d380b02ded851b70240dce8de2b3dc7e848532ac834a76ad",
+      "byte_length": 359317,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1154
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "First-failure hash and repeated attempts",
+      "caption": "The displayed SHA256 of ssh-first-failure.log matches the preserved file and original manifest. Three further localhost SSH commands end in Permission denied; password values are not displayed.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-14-journal-command-error-original.jpg",
+      "original_upload_filename": "Photo 14.jpg",
+      "accessible_attachment_filename": "14-Photo-14.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 14,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "627bd1d308c632fabc86c458aa7e3459be2c14c38939a7423e133221a121f7ed",
+      "byte_length": 353289,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1090
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Journal command error preserved",
+      "caption": "An attempted journal query uses --no pager and returns an ambiguous --no option error. This failed query is preserved as photographed and is not evidence of a successful export.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-15-corrected-failure-query-original.jpg",
+      "original_upload_filename": "Photo 15.jpg",
+      "accessible_attachment_filename": "15-Photo-15.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 15,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "01465e1087ee66aa573dc060291110f8e171fc96d7799aaaf23f1e3ffb763ade",
+      "byte_length": 369869,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1163
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Corrected journal query",
+      "caption": "The corrected --no-pager query displays four failed-password events at 13:58:20, 14:06:26, 14:06:35 and 14:06:45 (-04:00). The earlier command error remains visible above it.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-16-repeated-failures-export-original.jpg",
+      "original_upload_filename": "Photo 16.jpg",
+      "accessible_attachment_filename": "16-Photo-16.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 16,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "42928f37b3e3860a516ac37ea84cd663d79c95d4bf44611f5af770325e1b9f4d",
+      "byte_length": 360806,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1069
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Repeated-failure export",
+      "caption": "The corrected journal query is redirected to ssh-repeated-failures.log; wc/cat displays four records agreeing with the preserved original selection.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-17-repeated-hash-and-python-original.jpg",
+      "original_upload_filename": "Photo 17.jpg",
+      "accessible_attachment_filename": "17-Photo-17.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 17,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "597aaa3e86e7a8b29af951ae7807a8d34858a477f91c6bcf1a39cbb6b3fff3ce",
+      "byte_length": 338047,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1189
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Repeated-failure hash, Python version and early detector",
+      "caption": "The displayed SHA256 of ssh-repeated-failures.log matches the preserved file and manifest. python3 --version shows 3.14.7. An earlier detector stage prints SSH Threat Detection and Log records loaded: 4; it is not the final saved detector output.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-18-parser-development-stage-original.jpg",
+      "original_upload_filename": "Photo 18.jpg",
+      "accessible_attachment_filename": "18-Photo-18.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 18,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "f3c1e85624099eff835312b2bd7a94d9d01fa5012d383de24d17759e65acce5f",
+      "byte_length": 340546,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1209
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Intermediate parser development",
+      "caption": "The photograph shows four parsed timestamp/user/source/port records and earlier SSH Threat Detection output. It records an intermediate detector stage; that version of the source has not been recovered.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-19-positive-detector-alert-original.jpg",
+      "original_upload_filename": "Photo 19.jpg",
+      "accessible_attachment_filename": "19-Photo-19.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 19,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "120d079655f9bee58eed25a344dbc5e70deb500bb85499886fb0c78f3afebe3b",
+      "byte_length": 344952,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1134
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Positive detector test",
+      "caption": "The final Automated SSH Detection display reports four parsed events, threshold 3 failures / 60 seconds, and one alert with three failures from 14:06:26 to 14:06:45 (-04:00), matching ssh-detection-alert.log.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
+    },
+    {
+      "path": "evidence/SOC-004/SOC-004-20-saved-positive-result-original.jpg",
+      "original_upload_filename": "Photo 20.jpg",
+      "accessible_attachment_filename": "20-Photo-20.jpg",
+      "upload_date": "2026-10-12",
+      "upload_sequence": 20,
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "d9e96be2110acb405cf965409b45adbb65cf51f290a6c7dae9d15468f39d9e3c",
+      "byte_length": 290194,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [
+        1280,
+        1151
+      ],
+      "frames": 1,
+      "embedded_exif_present": true,
+      "embedded_icc_present": false,
+      "preservation": "Copied byte-for-byte from the supplied attachment, including embedded metadata. No image processing was performed.",
+      "title": "Saved positive result displayed",
+      "caption": "cat ssh-detection-alert.log displays four parsed events and one alert for the three failures from 14:06:26 to 14:06:45 (-04:00), agreeing with the preserved saved result.",
+      "authenticity_limit": "The digest identifies this upload. Camera acquisition, pre-upload editing history and a continuous historical chain of custody are not independently authenticated. Uploaded numbering is not proof of camera chronology."
     }
   ],
   "unavailable_requested_photographs": [
-    "SSH service loopback binding",
-    "Failed-login journal collection",
-    "Positive detector test",
     "Negative detector test",
     "Outside-window detector test",
-    "Syntax and SHA256 checks"
+    "Final detector syntax check and complete ten-file SHA256 verification"
   ],
-  "retrieval_scope": "Accessible conversation records, the prior SOC-004 work folders, and local attachment-preview files. The original ChatGPT conversation reader exposes only recent exchanges and an audit text attachment, with no older-page cursor. Only IMG_2551.jpeg was recovered; unavailable photographs require the user to upload the original files again.",
-  "integrity_scope": "photographs.sha256 covers this newly recovered upload. The historical ten-file SHA256SUMS.txt and the separate 32-artifact historical inventory remain unchanged."
+  "retrieval_scope": "One exact-boundary upload was recovered from the earlier local attachment cache; twenty further photographs were supplied directly on 2026-10-12. They cover SSH setup, eventual loopback binding, journal collection, individual log hashes, detector development and positive detection. No photographs of the negative or outside-window detector tests, or the final detector syntax/complete ten-file checksum check, are available.",
+  "integrity_scope": "photographs.sha256 covers all 21 preserved uploads. The historical ten-file SHA256SUMS.txt and separate 32-artifact historical inventory remain unchanged.",
+  "supplemental_upload_date": "2026-10-12"
 }
