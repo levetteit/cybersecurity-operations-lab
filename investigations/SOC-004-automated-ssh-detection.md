@@ -1,132 +1,146 @@
 # SOC-004 — Automated SSH Authentication Failure Detection
 
-**Status:** Detector validated on four new synthetic scenarios; draft publication awaiting the original evidence files  
-**Investigation type:** Linux SSH journal review and Python detection validation  
-**Environment:** User-controlled Kali Linux localhost SSH exercise  
-**Disposition:** Authorized lab activity; no real-world compromise is established  
-**Evidence basis:** Verbatim user-pasted detector source, one user-supplied terminal photograph, a user-reported pass acknowledgment, and a ten-file verification transcript. The original Kali log files and SHA256 manifest have not been supplied for this draft.
+**Status:** Completed controlled exercise; publication retained as a draft PR for user review  
+**Investigation type:** Linux SSH journal analysis and Python detection validation  
+**Environment:** Kali Linux VM `kali-soc-lab`, lab account `analyst`, localhost `127.0.0.1`  
+**Disposition:** Authorized lab activity; no confirmed real-world security incident  
+**Evidence basis:** Ten transferred source/log/result files, their original SHA256 manifest, the exact user-pasted detector source, and independently reproduced results.
 
 ## Objective and scope
 
-Detect repeated SSH password failures for the same source IP and target username: at least three matching events within an inclusive 60-second sliding window. Distinguish original localhost journal evidence from constructed test inputs and detector-generated results.
+Detect at least three SSH password failures for the same source IP and target username within an inclusive 60-second sliding window. Validate the positive, negative, outside-window, and exact-boundary scenarios while keeping original localhost journal evidence distinct from synthetic tests.
 
-This is a learning exercise in a personally controlled lab. A detection alert identifies the configured pattern; it does not independently establish an attack, successful login, or compromise.
+The reviewed exports represent a personally controlled lab. A detector alert establishes that the configured failure pattern was present in its input; it does not establish successful access or compromise.
 
-## Detector implementation
+## Collection, preservation, and publication handling
 
-The [Python detector](../detections/SOC-004/ssh_detector.py) preserves the exact source text pasted by the user in the referenced conversation. No logic, formatting, or error-handling changes were made. The source was imported from chat text; byte-for-byte identity with the original Kali file, including its final newline, remains unverified.
+The user transferred the existing `SOC-004-evidence` directory from Kali through a temporary VirtualBox shared folder. The ten artifacts named in the supplied `SHA256SUMS.txt` were hashed independently using `hashlib.sha256` over their raw bytes: **10 of 10 matched**. The underlying live journal and original collection commands were not independently inspected.
 
-- Accepts an input file as its first command-line argument; otherwise reads `~/SOC-004-evidence/ssh-repeated-failures.log`.
-- Matches lines beginning with a timestamp and ending in `Failed password for <username> from <source_ip> port <port> ssh2`.
-- Parses timestamps with `datetime.fromisoformat`, sorts events chronologically, and groups them by `(source_ip, username)`.
-- Retains an event at exactly 60 seconds because the expiration condition is `current_time - window[0] > WINDOW`.
-- Emits at most one alert per source-IP/username pair per invocation. Additional qualifying windows for that pair do not produce new alerts during the same run.
+The supplied source, nine log/result files, and manifest are preserved byte-for-byte in [`evidence/SOC-004/`](../evidence/SOC-004/README.md). The manifest remains unchanged and uses the original filenames relative to that directory. The transferred compiled Python cache is not part of the evidence manifest and is excluded from publication.
 
-Example after the original evidence files are provided, from the repository root:
+Review of the supplied excerpts found the established lab hostname/account and loopback addresses, with no password values, credentials, or non-loopback source addresses. No additional redaction was necessary for the approved publication copies. No file text was rewritten, and the earlier sanitization or export history is not independently authenticated.
 
-```sh
-python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-repeated-failures.log
-```
+Hash matching confirms that the transferred bytes agree with the supplied manifest. It does not authenticate the original journal acquisition or prove an unbroken chain of custody before transfer.
 
-That input file is pending; the command is a usage example, not a claim that this draft contains it.
+## Detector source and behavior
 
-## Evidence provenance and inventory
+The runnable [detector under `detections/SOC-004/`](../detections/SOC-004/ssh_detector.py) remains the **exact text pasted by the user**. The [transferred original `ssh_detector.py`](../evidence/SOC-004/ssh_detector.py) is also preserved with the evidence, so its original manifest entry can be verified without modifying paths or file bytes.
 
-The following names come from the user's ten-file verification transcript. They are an inventory of requested original artifacts, not links to files already published.
+The transferred source equals one leading LF byte, the exact pasted text, and two trailing LF bytes. There are no other differences. Both source copies passed syntax compilation and produced the same results on all four original scenario inputs. The separate copies preserve the chat source and the original file's hash without changing either.
 
-| Original artifact | Role and provenance | Draft availability |
-| --- | --- | --- |
-| `ssh_detector.py` | Detector source | Verbatim chat source imported under `detections/SOC-004/`; original Kali bytes pending |
-| `ssh-first-failure.log` | Original localhost SSH journal evidence: initial failed authentication | Original file pending |
-| `ssh-repeated-failures.log` | Original localhost SSH journal evidence: repeated failed authentications | Original file pending |
-| `ssh-detection-alert.log` | Detector output for the repeated-failures input; derived result, not a journal export | Original file pending |
-| `ssh-negative-test.log` | Below-threshold validation input | Original file and provenance details pending; no claim that this is an original journal export |
-| `ssh-negative-test-result.log` | Derived detector result for the negative input | Original file pending |
-| `ssh-boundary-test.log` | Synthetic outside-window boundary input | Original synthetic fixture pending; not original SSH journal evidence |
-| `ssh-boundary-test-result.log` | Derived detector result for the outside-window fixture | Original file pending |
-| `ssh-exact-boundary-test.log` | Synthetic exact-60-second boundary input | Original synthetic fixture pending; not original SSH journal evidence |
-| `ssh-exact-boundary-test-result.log` | Derived detector result for the exact-boundary fixture | Original file pending; a terminal photograph shows the result |
+The detector:
 
-The first-failure and repeated-failures logs are designated original localhost journal evidence by the exercise context. Their contents, collection command, full timestamp range, event counts, and sanitization history cannot yet be independently inspected. Do not treat synthetic boundary records as evidence that those SSH events actually occurred.
+- Reads the first command-line argument as an input path, or defaults to `~/SOC-004-evidence/ssh-repeated-failures.log`.
+- Matches timestamped lines ending in `Failed password for <username> from <source_ip> port <port> ssh2`.
+- Parses timestamps, sorts events, and maintains a deque per `(source_ip, username)`.
+- Removes timestamps only when their age is **greater than 60 seconds**. An event exactly 60 seconds old remains in the window.
+- Emits an alert at three retained failures and at most one alert per source-IP/username pair per invocation.
 
-The negative test's construction method is unavailable in the retrieved material. Its provenance will be confirmed from the original file and the user's collection notes before it is presented as journal-derived or synthetic.
+## Evidence inventory and provenance
 
-No missing log has been reconstructed from the photograph or invented for this draft. The new validation run below uses different, explicitly synthetic inputs and does not replace any of these ten original artifacts.
+| Artifact | Role and provenance |
+| --- | --- |
+| [`ssh-first-failure.log`](../evidence/SOC-004/ssh-first-failure.log) | Original localhost SSH journal excerpt: password check, PAM failure, failed password, and pre-authentication connection closure |
+| [`ssh-repeated-failures.log`](../evidence/SOC-004/ssh-repeated-failures.log) | Original localhost SSH journal selection: four failed-password records |
+| [`ssh-detection-alert.log`](../evidence/SOC-004/ssh-detection-alert.log) | Derived detector output for the original repeated-failures selection |
+| [`ssh-negative-test.log`](../evidence/SOC-004/ssh-negative-test.log) | Journal-derived negative test subset: byte-identical records to the first two lines of the repeated-failures selection; the original extraction command was not supplied |
+| [`ssh-negative-test-result.log`](../evidence/SOC-004/ssh-negative-test-result.log) | Derived detector output for the negative subset |
+| [`ssh-boundary-test.log`](../evidence/SOC-004/ssh-boundary-test.log) | **Synthetic** boundary fixture with failures 61 seconds apart; not original journal evidence |
+| [`ssh-boundary-test-result.log`](../evidence/SOC-004/ssh-boundary-test-result.log) | Derived detector output for the synthetic outside-window fixture |
+| [`ssh-exact-boundary-test.log`](../evidence/SOC-004/ssh-exact-boundary-test.log) | **Synthetic** exact-boundary fixture with offsets 0, 30, and 60 seconds; not original journal evidence |
+| [`ssh-exact-boundary-test-result.log`](../evidence/SOC-004/ssh-exact-boundary-test-result.log) | Derived detector output for the synthetic exact-boundary fixture |
+| [`ssh_detector.py`](../evidence/SOC-004/ssh_detector.py) | Original transferred detector file, included in the ten-file manifest |
 
-## Observed exact-boundary photograph
+The two synthetic boundary fixtures reuse lab-style hostname, account, loopback address, PID, and port fields. Their timestamps are constructed test values and do not establish that those SSH events occurred at those times. Detector output is a derived result, not a journal export.
 
-A user-supplied photograph in the referenced conversation shows a detector invocation against `ssh-exact-boundary-test.log` and output reporting:
+## Original journal observations and alert timeline
 
-- Events parsed: **3**.
-- Source IP: **127.0.0.1**; target user: **analyst**.
-- Failed attempts at alert time: **3**; total alerts: **1**.
-- Window start: **2026-10-12T13:58:20-04:00**.
-- Alert time: **2026-10-12T13:59:20-04:00**.
+All timestamps below come from the supplied original journal excerpts and retain their recorded `-04:00` offset.
 
-The displayed timestamps span exactly 60 seconds, consistent with the inclusive boundary in the pasted source. They belong to the synthetic test shown in the photograph; they are not assigned to the original journal collection. The photograph was reviewed without regenerating log text. It is not included in this draft, and it cannot establish the bytes or hash of the underlying files.
+| Time on 2026-10-12 | Supplied observation |
+| --- | --- |
+| 13:58:18 | `unix_chkpwd` password-check failure and `pam_unix(sshd:auth)` authentication failure for `analyst` |
+| 13:58:20 | Failed SSH password from `127.0.0.1`, port `33040`; connection closed before authentication |
+| 14:06:26 | Failed SSH password from `127.0.0.1`, port `38004` |
+| 14:06:35 | Failed SSH password from `127.0.0.1`, port `43684` |
+| 14:06:45 | Failed SSH password from `127.0.0.1`, port `47954`; the detector reaches its threshold |
 
-## Four validated scenarios
+The positive input contains **four** matching events. The first event is 486 seconds before the next and expires from the active window. The final three failures occur over **19 seconds**, producing one alert with window start **14:06:26-04:00** and alert time **14:06:45-04:00**.
 
-The exact pasted detector was executed on four **newly generated synthetic inputs** during publication preparation on **2026-10-12**, using **Python 3.14.8 on Windows**. All inputs used the same loopback source and a synthetic `testuser` account. The baseline was deliberately artificial: `2000-01-01T00:00:00+00:00`, with host label `synthetic-validation`.
+The initial password/PAM records and connection closure provide context, but only the matching `Failed password` line is counted by this detector. No successful authentication is shown in the supplied excerpts; they do not establish the full session or host history.
 
-Offsets below are seconds relative to that synthetic baseline. These values describe the new validation run only; they are not asserted to be the user's unseen Kali fixture contents.
+## Four validated original scenarios
 
-| Scenario | New input offsets | Parsed events | Expected alerts | Actual alerts | Result |
-| --- | --- | ---: | ---: | ---: | --- |
-| Positive: three failures within the window | 0, 30, 59 | 3 | 1 | 1 | PASS |
-| Negative: fewer than three failures | 0, 30 | 2 | 0 | 0 | PASS |
-| Outside-window boundary: first event expires | 0, 30, 61 | 3 | 0 | 0 | PASS |
-| Exact boundary: first event remains at 60 seconds | 0, 30, 60 | 3 | 1 | 1 | PASS |
+On **2026-10-12**, the transferred original inputs were replayed with **Python 3.14.8 on Windows**, using both the exact pasted-source copy and the transferred-source copy. Both passed all four scenarios.
 
-Validation checked parsed-event counts, total alerts, alert block counts, and the source, username, failed-attempt count, window start, and alert time for alerting scenarios. Non-alerting scenarios produced the detector's no-threshold-exceeded message.
+| Scenario | Supplied input | Parsed events | Expected / actual alerts | Result |
+| --- | --- | ---: | ---: | --- |
+| Positive: threshold reached | Four original journal failures; final three at 14:06:26, 14:06:35, and 14:06:45 | 4 | 1 / 1 | PASS |
+| Negative: fewer than three failures | First two original failure records, 486 seconds apart | 2 | 0 / 0 | PASS |
+| Outside-window boundary | Synthetic timestamps 13:58:20, 13:59:21, 14:00:22; offsets 0, 61, 122 seconds | 3 | 0 / 0 | PASS |
+| Exact 60-second boundary | Synthetic timestamps 13:58:20, 13:58:50, 13:59:20; offsets 0, 30, 60 seconds | 3 | 1 / 1 | PASS |
 
-[Machine-readable validation results](../evidence/SOC-004/publication-preparation-validation.json) record this new run. The original Kali result logs remain pending; the photograph corroborates only the exact-boundary result.
+The original negative fixture is below threshold and also outside the window; it does not isolate the count condition inside a single 60-second window. The earlier preparation run separately checked two failures at offsets 0 and 30 seconds.
+
+For each original scenario, parsed counts and alert totals were checked, and **the complete rerun output matched the saved Kali result log** after normalizing CRLF to LF for comparison. The published original evidence bytes were not normalized or edited.
+
+[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The user-supplied exact-boundary terminal photograph reviewed earlier also showed three parsed events and one alert from 13:58:20 to 13:59:20, consistent with the transferred synthetic fixture and result.
+
+The [earlier preparation-run results](../evidence/SOC-004/publication-preparation-validation.json) remain separately labeled. They used freshly generated artificial inputs with a 2000-01-01 baseline and do not replace the user's Kali evidence or its saved outputs.
 
 ## Syntax and ten-file SHA256 verification
 
-The available conversation contains a user acknowledgment, `passed`, after the detector source was pasted. The command associated with that acknowledgment is unavailable, so the original syntax-check invocation cannot be reconstructed. Independently, `py_compile.compile(..., doraise=True)` succeeded on the imported detector during this preparation run.
+Both source copies passed `py_compile.compile(..., doraise=True)`. The original [`SHA256SUMS.txt`](../evidence/SOC-004/SHA256SUMS.txt) contains ten supplied digest values, and all ten independently matched the transferred raw bytes.
 
-The [user-reported verification transcript](../evidence/SOC-004/user-reported-sha256-check.txt) preserves these ten lines verbatim:
+The [user-reported ten-line check](../evidence/SOC-004/user-reported-sha256-check.txt) is retained as a historical transcript. It is distinct from the manifest and from the new independent verification results.
 
-```text
-ssh_detector.py: OK
-ssh-first-failure.log: OK
-ssh-repeated-failures.log: OK
-ssh-detection-alert.log: OK
-ssh-negative-test.log: OK
-ssh-negative-test-result.log: OK
-ssh-boundary-test.log: OK
-ssh-boundary-test-result.log: OK
-ssh-exact-boundary-test.log: OK
-ssh-exact-boundary-test-result.log: OK
+From the repository root, the following Linux commands reproduce syntax and original-file integrity checks:
+
+```sh
+python3 -m py_compile detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh_detector.py
+(
+  cd evidence/SOC-004
+  sha256sum -c SHA256SUMS.txt
+)
 ```
 
-The request identifies this as the ten-file SHA256 verification. The transcript reports ten successful checks, but contains **no digest values**. Neither the original manifest nor the exact command is available. This draft does not claim independent verification of those original files, provide invented hashes, or treat freshly computed hashes of imported chat text as the user's original SHA256 values.
+The manifest covers the **original evidence-directory detector**, not the separate pasted-source copy, report, manifest itself, or newly generated validation JSON. The two source files have different hashes because of their documented outer blank lines.
 
-After upload, verification must compare the supplied original file bytes with the supplied existing manifest. Repository-path changes must be documented when the detector is stored separately from the evidence logs. Sanitized publication copies require their own digest values and a documented redaction mapping; their hashes must not be presented as hashes of unmodified originals.
+Replay the original scenarios with:
+
+```sh
+python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-repeated-failures.log
+python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-negative-test.log
+python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-boundary-test.log
+python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-exact-boundary-test.log
+```
+
+The expected alert totals are **1, 0, 0, 1**, respectively.
 
 ## Analysis and limitations
 
-The four new synthetic scenarios support the detector's threshold and inclusive window behavior for matching lines. The exact-boundary photograph is consistent with the same behavior on the user's displayed lab test.
+The original positive case and two synthetic boundary fixtures validate the configured threshold and inclusive window behavior for matching lines. Original and pasted-source copies reproduce the saved outputs without logic changes.
 
-The preserved implementation has deliberate scope limits:
+The preserved detector has a limited scope:
 
-- It matches the shown password-failure format, not every SSH failure message. In particular, `Failed password for invalid user ...` does not match this pattern.
-- A nonmatching line is skipped silently. No-match input can report zero alerts without proving that no authentication failures occurred.
-- Matching lines with malformed timestamps can raise an exception; mixed timezone-aware and timezone-naive timestamps can also fail sorting or subtraction.
-- A missing file prints an error and returns without an explicit nonzero exit status. Validation must inspect output rather than rely only on the process exit code.
-- Deduplication is per invocation, not durable incident tracking. Source IP and username grouping does not detect distributed activity across different pairs.
+- It does not match every SSH authentication message. In particular, `Failed password for invalid user ...` does not match the supplied pattern.
+- Nonmatching lines are silently skipped. Zero alerts do not prove that an input contains no authentication failures.
+- Malformed matched timestamps can raise an exception; mixing timezone-aware and timezone-naive timestamps can also fail.
+- A missing file prints an error and returns without an explicit nonzero exit status. A process exit status alone is insufficient to validate a run.
+- Deduplication lasts only for the invocation. Grouping by source IP and username does not detect distributed activity across different pairs.
 - This is an offline text-file detector. No live journal ingestion, SIEM integration, automated blocking, or production deployment is claimed.
 
-## Disposition and publication gate
+The report covers the supplied localhost excerpts and fixture results. It does not establish the full journal history, independently authenticate collection, or assess the entire host for compromise.
 
-**Authorized controlled localhost exercise.** The reproduced results demonstrate the configured detection logic within the stated test scope. The unseen original journal evidence is insufficient here to establish a full event timeline or a broader host-security conclusion.
+## Disposition and merge gate
 
-The PR must remain **draft and unmerged** until the original approved artifacts are uploaded, provenance and sanitization are checked, the original ten-file manifest is verified, and the user explicitly approves merging. Approval to publish the draft is not merge approval.
+**Authorized controlled localhost exercise / no confirmed real-world security incident.** The transferred artifacts pass ten-file integrity verification, both syntax checks, and all four original scenario replays within the documented scope.
+
+The evidence, detector, results, report, and README index are prepared in a separate **draft PR**. The PR remains **unmerged** until the user explicitly approves merging. Approval to publish these artifacts does not authorize merge.
 
 ## Lessons learned
 
 - Validate both the event-count threshold and the inclusive time boundary.
-- Separate original journal records, synthetic fixtures, and detector-derived results.
-- Preserve exact source and file bytes before asserting hash integrity.
-- Record evidence gaps directly and keep incomplete publication in draft review.
+- Keep original journal records, synthetic fixtures, and detector-derived output distinct.
+- Preserve original bytes and manifest paths when asserting hash integrity.
+- Compare complete outputs, document source-format differences, and state collection limitations.

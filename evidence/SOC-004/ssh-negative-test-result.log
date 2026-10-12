@@ -1,0 +1,7 @@
+SOC-004 | Automated SSH Detection
+Events parsed: 2
+Detection threshold: 3 failures / 60 seconds
+
+[OK] No detection thresholds exceeded.
+
+Total alerts: 0

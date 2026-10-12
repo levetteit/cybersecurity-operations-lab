@@ -1,12 +1,38 @@
-# SOC-004 evidence status
+# SOC-004 evidence and validation
 
-This directory currently contains:
+The user transferred these existing Kali artifacts through a temporary VirtualBox shared folder. All ten files listed in the supplied [SHA256SUMS.txt](SHA256SUMS.txt) independently matched their expected hashes on 2026-10-12. Source, log, result, and manifest bytes are preserved unchanged.
 
-- `user-reported-sha256-check.txt`: the ten `OK` lines pasted by the user. This is a verification transcript, **not a SHA256 manifest**.
-- `publication-preparation-validation.json`: results from four new synthetic inputs generated on 2026-10-12. These results are **not the user's original Kali result logs**.
+## Original journal evidence
 
-The preserved detector source is at [`detections/SOC-004/ssh_detector.py`](../../detections/SOC-004/ssh_detector.py). It was copied verbatim from the user-pasted conversation text; original file-byte identity remains pending.
+- [ssh-first-failure.log](ssh-first-failure.log): original localhost SSH journal excerpt, including password/PAM failure and pre-authentication closure.
+- [ssh-repeated-failures.log](ssh-repeated-failures.log): four original failed-password records from the localhost exercise.
+- [ssh-detection-alert.log](ssh-detection-alert.log): derived detector result; four parsed events and one alert.
 
-Original localhost journal exports, the user's synthetic boundary fixtures, their derived outputs, and the existing SHA256 manifest are awaiting upload. No empty placeholders or reconstructed log contents are included. The [investigation report](../../investigations/SOC-004-automated-ssh-detection.md) lists the ten original artifact names and their provenance.
+## Test fixtures and saved results
 
-Keep the original loopback SSH journal records distinct from synthetic boundary test logs when adding the approved sanitized files. Record any redaction mapping and compute publication-copy hashes separately from original-file hashes. The PR remains draft pending evidence verification and explicit user approval before merge.
+- [ssh-negative-test.log](ssh-negative-test.log): journal-derived subset, with records byte-identical to the first two lines of the repeated-failures file; original extraction command unavailable.
+- [ssh-negative-test-result.log](ssh-negative-test-result.log): two events, zero alerts.
+- [ssh-boundary-test.log](ssh-boundary-test.log): **synthetic** fixture, offsets 0/61/122 seconds.
+- [ssh-boundary-test-result.log](ssh-boundary-test-result.log): three events, zero alerts.
+- [ssh-exact-boundary-test.log](ssh-exact-boundary-test.log): **synthetic** fixture, offsets 0/30/60 seconds.
+- [ssh-exact-boundary-test-result.log](ssh-exact-boundary-test-result.log): three events, one alert.
+
+Synthetic fixture timestamps are constructed test values. They are not original SSH journal evidence. Result logs are derived detector output.
+
+## Source and integrity
+
+- [ssh_detector.py](ssh_detector.py): original transferred detector bytes, covered by the manifest.
+- [Exact pasted-source detector](../../detections/SOC-004/ssh_detector.py): preserved separately; the original file has one additional leading LF and two trailing LF bytes, with no other difference.
+- [original-evidence-validation.json](original-evidence-validation.json): independent ten-file SHA256 verification, both syntax checks, and complete saved-output comparisons for four original scenarios.
+- [user-reported-sha256-check.txt](user-reported-sha256-check.txt): historical ten-line `OK` transcript; distinct from the manifest.
+- [publication-preparation-validation.json](publication-preparation-validation.json): earlier run on four newly generated artificial inputs; distinct from the original Kali scenario results.
+
+To verify original evidence bytes from this directory:
+
+```sh
+sha256sum -c SHA256SUMS.txt
+```
+
+The manifest covers ten original artifacts; it does not cover the manifest itself or the additional report and validation files. Existing lab hostname/account and loopback values required no additional publication redaction. Hash matching confirms agreement with the supplied manifest, not independent authentication of the original collection.
+
+Read the [SOC-004 investigation report](../../investigations/SOC-004-automated-ssh-detection.md) for the timeline, scenario interpretation, and limitations. The PR remains draft and requires explicit user approval before merge.
