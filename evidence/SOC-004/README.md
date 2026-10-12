@@ -19,6 +19,18 @@ The user transferred these existing Kali artifacts through a temporary VirtualBo
 
 Synthetic fixture timestamps are constructed test values. They are not original SSH journal evidence. Result logs are derived detector output.
 
+## Recovered original terminal photograph
+
+On 2026-10-12, the cached user upload `IMG_2551.jpeg` was recovered and copied byte-for-byte as [SOC-004-exact-boundary-terminal-original.jpeg](SOC-004-exact-boundary-terminal-original.jpeg). The earlier SOC-004 preparation chat records viewing this same cached attachment. Both accessible cached copies are identical; the published JPEG is 749,043 bytes, 1536 × 1300 pixels, with one frame. Its embedded EXIF and ICC data remain intact.
+
+![User-supplied Kali terminal photograph showing the synthetic exact 60-second boundary fixture and detector output](SOC-004-exact-boundary-terminal-original.jpeg)
+
+*Exact-boundary test photograph, preserved as received: three constructed failure records at 13:58:20, 13:58:50, and 13:59:20 (`-04:00`); three parsed events and one alert. The displayed fixture and output agree with [ssh-exact-boundary-test.log](ssh-exact-boundary-test.log) and [its saved result](ssh-exact-boundary-test-result.log). These are synthetic test timestamps, not photograph capture times or proof of live authentication events.*
+
+[Photograph provenance](photograph-provenance.json) records the original upload name, visible content, recovery scope, SHA256 digest, and authenticity limits. [photographs.sha256](photographs.sha256) is a separate inventory for this recovered upload; it does not modify the original ten-file manifest. From this directory, verify the photograph with `sha256sum -c photographs.sha256`.
+
+The requested photographs of SSH loopback binding, failed-login journal collection, the positive, negative, and outside-window detector tests, and syntax/SHA256 checks could not be retrieved. Only the exact-boundary photograph is available here. The remaining original images must be uploaded again before they can be added. Preserving the recovered upload bytes does not independently authenticate camera acquisition or any pre-upload editing history.
+
 ## Source and integrity
 
 - [ssh_detector.py](ssh_detector.py): original transferred detector bytes, covered by the manifest.
@@ -35,6 +47,6 @@ sha256sum -c SHA256SUMS.txt
 
 The manifest covers ten original artifacts; it does not cover the manifest itself or the additional report and validation files. Existing lab hostname/account and loopback values required no additional publication redaction. Hash matching confirms agreement with the supplied manifest, not independent authentication of the original collection.
 
-The [new synthetic test package](../../tests/SOC-004/README.md) and optional [hardened detector](../../detections/SOC-004/ssh_detector_v2.py) are separate additions outside this directory and the original manifest. The earlier preparation JSON remains unchanged; its old exact artificial inputs are unavailable. The mentioned SOC-004 terminal photograph is not published here.
+The [new synthetic test package](../../tests/SOC-004/README.md) and optional [hardened detector](../../detections/SOC-004/ssh_detector_v2.py) are separate additions outside this directory and the original manifest. The earlier preparation JSON remains unchanged; its old exact artificial inputs are unavailable. The recovered terminal photograph is documented above and has its own integrity inventory.
 
 Read the [SOC-004 investigation report](../../investigations/SOC-004-automated-ssh-detection.md) for the timeline, scenario interpretation, and limitations. The user explicitly approved merging this publication on **2026-10-12**, after the draft and its completed verification were presented for review.

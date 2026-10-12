@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "recovery_date": "2026-10-12",
+  "source_context": "User upload in the GitHub Portfolio Improvements conversation; the earlier Prepare SOC-004 draft PR chat records viewing the same cached IMG_2551.jpeg attachment.",
+  "recovered_photographs": [
+    {
+      "path": "evidence/SOC-004/SOC-004-exact-boundary-terminal-original.jpeg",
+      "original_upload_filename": "IMG_2551.jpeg",
+      "provenance_class": "User-supplied terminal photograph, preserved as received",
+      "sha256": "ae4a2a74463d092a9933fe68ea78907e688e4bcbfd40f2b97843dc6d0333d02d",
+      "byte_length": 749043,
+      "media_type": "image/jpeg",
+      "dimensions_pixels": [1536, 1300],
+      "frames": 1,
+      "preservation": "Copied byte-for-byte from the cached upload. Two accessible cached copies have identical bytes. Embedded EXIF and ICC data remain intact. No image processing was performed during this recovery.",
+      "visible_content": {
+        "scenario": "Synthetic exact 60-second boundary test",
+        "fixture_timestamps": [
+          "2026-10-12T13:58:20-04:00",
+          "2026-10-12T13:58:50-04:00",
+          "2026-10-12T13:59:20-04:00"
+        ],
+        "events_parsed": 3,
+        "threshold_failures": 3,
+        "window_seconds": 60,
+        "source_ip": "127.0.0.1",
+        "target_user": "analyst",
+        "window_start": "2026-10-12T13:58:20-04:00",
+        "alert_time": "2026-10-12T13:59:20-04:00",
+        "total_alerts": 1
+      },
+      "related_artifacts": [
+        "evidence/SOC-004/ssh-exact-boundary-test.log",
+        "evidence/SOC-004/ssh-exact-boundary-test-result.log"
+      ],
+      "comparison": "Visible fixture records and detector output agree with the preserved exact-boundary fixture and saved result. This is a visual comparison, not a recovered raw terminal session.",
+      "authenticity_limit": "The digest identifies the recovered upload bytes. Original camera acquisition, pre-upload edit history, and an unbroken historical chain of custody are not independently authenticated. Displayed synthetic timestamps are not photograph capture times or evidence of live authentication events."
+    }
+  ],
+  "unavailable_requested_photographs": [
+    "SSH service loopback binding",
+    "Failed-login journal collection",
+    "Positive detector test",
+    "Negative detector test",
+    "Outside-window detector test",
+    "Syntax and SHA256 checks"
+  ],
+  "retrieval_scope": "Accessible conversation records, the prior SOC-004 work folders, and local attachment-preview files. The original ChatGPT conversation reader exposes only recent exchanges and an audit text attachment, with no older-page cursor. Only IMG_2551.jpeg was recovered; unavailable photographs require the user to upload the original files again.",
+  "integrity_scope": "photographs.sha256 covers this newly recovered upload. The historical ten-file SHA256SUMS.txt and the separate 32-artifact historical inventory remain unchanged."
+}

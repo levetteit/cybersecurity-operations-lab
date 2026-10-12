@@ -4,7 +4,7 @@
 **Investigation type:** Linux SSH journal analysis and Python detection validation  
 **Environment:** Kali Linux VM `kali-soc-lab`, lab account `analyst`, localhost `127.0.0.1`  
 **Disposition:** Authorized lab activity; no confirmed real-world security incident  
-**Evidence basis:** Ten transferred source/log/result files, their original SHA256 manifest, the exact user-pasted detector source, and independently reproduced results.
+**Evidence basis:** Ten transferred source/log/result files, their original SHA256 manifest, the historically attributed exact user-pasted detector source, independently reproduced results, and one recovered user-supplied terminal photograph of the synthetic exact-boundary test.
 
 ## Objective and scope
 
@@ -21,6 +21,16 @@ The supplied source, nine log/result files, and manifest are preserved byte-for-
 Review of the supplied excerpts found the established lab hostname/account and loopback addresses, with no password values, credentials, or non-loopback source addresses. No additional redaction was necessary for the approved publication copies. No file text was rewritten, and the earlier sanitization or export history is not independently authenticated.
 
 Hash matching confirms that the transferred bytes agree with the supplied manifest. It does not authenticate the original journal acquisition or prove an unbroken chain of custody before transfer.
+
+### Recovered exact-boundary photograph
+
+On **2026-10-12**, the original cached upload `IMG_2551.jpeg` was recovered from the earlier conversation's attachment-preview files. The earlier SOC-004 preparation chat records viewing the same attachment. Its bytes were copied unchanged to [SOC-004-exact-boundary-terminal-original.jpeg](../evidence/SOC-004/SOC-004-exact-boundary-terminal-original.jpeg); both accessible cached copies have the same SHA256 digest. The JPEG contains one 1536 × 1300 frame and retains its embedded metadata. [Provenance and recovery limits](../evidence/SOC-004/photograph-provenance.json) and a [separate photograph hash inventory](../evidence/SOC-004/photographs.sha256) accompany it.
+
+![Original user-supplied Kali terminal photograph of the synthetic exact-boundary detector test](../evidence/SOC-004/SOC-004-exact-boundary-terminal-original.jpeg)
+
+*The photograph shows three synthetic failure records at 13:58:20, 13:58:50, and 13:59:20 (`-04:00`), followed by three parsed events and one alert spanning exactly 60 seconds. The displayed input and result agree with the preserved [exact-boundary fixture](../evidence/SOC-004/ssh-exact-boundary-test.log) and [saved result](../evidence/SOC-004/ssh-exact-boundary-test-result.log). The constructed timestamps describe the test input, not camera acquisition or live SSH activity.*
+
+The original photos of SSH loopback binding, failed-login journal collection, the positive, negative, and outside-window detector tests, and syntax/SHA256 checks remain unavailable through the accessible conversation records and files. They require another upload. This recovery preserves one actual user-uploaded photograph; it does not establish an unbroken pre-upload chain of custody or an unedited camera-original history.
 
 ## Detector source and behavior
 
@@ -84,7 +94,7 @@ The original negative fixture is below threshold and also outside the window; it
 
 For each original scenario, parsed counts and alert totals were checked, and **the complete rerun output matched the saved Kali result log** after normalizing CRLF to LF for comparison. The published original evidence bytes were not normalized or edited.
 
-[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The earlier report says an exact-boundary terminal photograph was reviewed and showed three parsed events and one alert. No SOC-004 photograph is published or available for independent reinspection in this remediation. The public basis is the preserved synthetic fixture and saved result, which can be replayed; no photograph or historical record has been fabricated to fill the gap.
+[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The previously reviewed exact-boundary terminal photograph has now been recovered and is linked above for reinspection. It shows three parsed events and one alert, consistent with the preserved synthetic fixture and saved result. The other three scenario replays continue to rely on their supplied inputs and saved results; their original photographs have not been recovered.
 
 The [earlier preparation-run results](../evidence/SOC-004/publication-preparation-validation.json) remain separately labeled. They used freshly generated artificial inputs with a 2000-01-01 baseline and do not replace the user's Kali evidence or its saved outputs. The exact old generator/input bytes were not preserved, so that historical preparation run cannot be independently reconstructed in full.
 
@@ -144,7 +154,7 @@ The report covers the supplied localhost excerpts and fixture results. It does n
 
 **Authorized controlled localhost exercise / no confirmed real-world security incident.** The transferred artifacts pass ten-file integrity verification, both syntax checks, and all four original scenario replays within the documented scope.
 
-The evidence, detector, results, report, and README index were prepared in a separate draft PR and held for user review. On **2026-10-12**, the user explicitly approved merging after the ten-file integrity checks, syntax checks, and all four original scenario replays passed. The required approval gate was satisfied before that historical merge (PR #10). The documentation remediation and new tests are a separate draft PR requiring new user review; that earlier approval does not authorize this sprint to merge.
+The evidence, detector, results, report, and README index were prepared in a separate draft PR and held for user review. On **2026-10-12**, the user explicitly approved merging after the ten-file integrity checks, syntax checks, and all four original scenario replays passed. The required approval gate was satisfied before that historical merge (PR #10). The documentation remediation and new tests were subsequently merged in [PR #11](https://github.com/levetteit/cybersecurity-operations-lab/pull/11) on 2026-10-12. This photograph recovery is a separate follow-up draft for user approval before merge.
 
 ## Lessons learned
 
