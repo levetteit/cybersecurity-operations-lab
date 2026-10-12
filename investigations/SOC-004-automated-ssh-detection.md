@@ -30,7 +30,7 @@ On **2026-10-12**, the original cached upload `IMG_2551.jpeg` was recovered from
 
 *The photograph shows three synthetic failure records at 13:58:20, 13:58:50, and 13:59:20 (`-04:00`), followed by three parsed events and one alert spanning exactly 60 seconds. The displayed input and result agree with the preserved [exact-boundary fixture](../evidence/SOC-004/ssh-exact-boundary-test.log) and [saved result](../evidence/SOC-004/ssh-exact-boundary-test-result.log). The constructed timestamps describe the test input, not camera acquisition or live SSH activity.*
 
-Two supplied batches totaling 25 JPEG uploads are now preserved and indexed below, in addition to the recovered exact-boundary JPEG. All four original scenario results now have photographed views. Only the final detector syntax/complete ten-file checksum photograph remains unavailable. The latest exact-boundary upload depicts the same terminal view as the cached JPEG with different bytes; the 26-file count does not assert 26 independent camera acquisitions.
+Two supplied batches totaling 25 JPEG uploads are now preserved and indexed below, in addition to the recovered exact-boundary JPEG. All four original scenario results now have photographed views. The user confirmed on **2026-10-12** that this is **all the photographs they took, beginning with step 1 SSH setup/binding**. No additional photo uploads are expected. The final detector syntax/complete ten-file checksum check is supported by preserved text records and is not shown in this photo set. The latest exact-boundary upload depicts the same terminal view as the cached JPEG with different bytes; the 26-file count does not assert 26 independent camera acquisitions.
 
 ### Twenty additional supplied photographs
 
@@ -75,7 +75,7 @@ Photo 12 shows `journalctl` with displayed bounds `2026-10-12 13:57:00` through 
 
 *Photo 12: photographed export command and displayed output. This supplements the transferred file; it does not authenticate the full underlying journal or prior collection history.*
 
-The SHA256 values photographed in Photo 13 (`ssh-first-failure.log`) and Photo 17 (`ssh-repeated-failures.log`) agree with the corresponding preserved bytes and original manifest entries. Only these two individual hash observations are shown; the final ten-file checksum photograph remains unavailable.
+The SHA256 values photographed in Photo 13 (`ssh-first-failure.log`) and Photo 17 (`ssh-repeated-failures.log`) agree with the corresponding preserved bytes and original manifest entries. These photographs show two individual hash observations; the complete ten-file verification is supported separately by the preserved text validation and checksum transcript.
 
 #### Detector development and positive result
 
@@ -187,7 +187,7 @@ The [new synthetic test package](../tests/SOC-004/README.md) separately preserve
 
 Both source copies passed `py_compile.compile(..., doraise=True)`. The original [`SHA256SUMS.txt`](../evidence/SOC-004/SHA256SUMS.txt) contains ten supplied digest values, and all ten independently matched the transferred raw bytes.
 
-Photos 13 and 17 separately show the first-failure and repeated-failure log hashes, both matching the corresponding manifest entries. A photograph of the final detector syntax/complete ten-file checksum check is still unavailable.
+Photos 13 and 17 separately show the first-failure and repeated-failure log hashes, both matching the corresponding manifest entries. The user-confirmed complete photo set does not show the final detector syntax/complete ten-file checksum check. Those checks are supported by the preserved validation record and checksum transcript.
 
 The [user-reported ten-line check](../evidence/SOC-004/user-reported-sha256-check.txt) is retained as a historical transcript. It is distinct from the manifest and from the new independent verification results.
 

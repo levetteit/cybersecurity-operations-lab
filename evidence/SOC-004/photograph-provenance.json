@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "recovery_date": "2026-10-12",
   "source_context": "User upload in the GitHub Portfolio Improvements conversation; the earlier Prepare SOC-004 draft PR chat records viewing the same cached IMG_2551.jpeg attachment. Twenty additional JPEG attachments labeled Photo 1.jpg through Photo 20.jpg were supplied directly in the follow-up request. A second supplied batch labeled Photo 1.jpg through Photo 5.jpg adds negative and synthetic boundary-test photographs.",
   "recovered_photographs": [
@@ -665,10 +665,17 @@
       "byte_relationship": "Different SHA256 digest and dimensions from the recovered JPEG; both supplied versions are preserved. Separate photographic acquisition is not established."
     }
   ],
-  "unavailable_requested_photographs": [
-    "Final detector syntax check and complete ten-file SHA256 verification"
-  ],
-  "retrieval_scope": "One exact-boundary JPEG was recovered from the earlier attachment cache; twenty setup/journal/development/positive photographs and five negative/boundary-test photographs were supplied directly on 2026-10-12. All four original scenario results now have photographed views. The final detector syntax/complete ten-file checksum photograph remains unavailable. The second exact-boundary result upload shows the same terminal view as the recovered JPEG with different bytes; the total of 26 preserved JPEG files does not imply 26 independent camera acquisitions.",
+  "unavailable_requested_photographs": [],
+  "retrieval_scope": "One exact-boundary JPEG was recovered from the earlier attachment cache; twenty setup/journal/development/positive photographs and five negative/boundary-test photographs were supplied directly on 2026-10-12. All four original scenario results now have photographed views. The user confirmed this is the complete photographic set from the first SSH setup/binding step onward; no additional photo uploads are expected. The final detector syntax/complete ten-file checksum check is supported by preserved text validation and transcript records and is not shown in this photo set. The second exact-boundary result upload shows the same terminal view as the recovered JPEG with different bytes; the total of 26 preserved JPEG files does not imply 26 independent camera acquisitions.",
   "integrity_scope": "photographs.sha256 covers all 26 preserved JPEG uploads. The original ten-file SHA256SUMS.txt and separate 32-artifact historical inventory remain unchanged.",
-  "supplemental_upload_date": "2026-10-12"
+  "supplemental_upload_date": "2026-10-12",
+  "user_reported_collection_completeness": {
+    "confirmation_date": "2026-10-12",
+    "user_statement": "those are all the photos i took starting from step 1 ssh binding",
+    "scope": "Complete set of SOC-004 photographs the user took, beginning with the first SSH setup/binding step",
+    "additional_uploads_expected": false
+  },
+  "checks_without_supplied_photographs": [
+    "Final detector syntax check and complete ten-file SHA256 verification"
+  ]
 }

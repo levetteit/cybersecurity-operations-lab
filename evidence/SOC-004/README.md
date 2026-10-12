@@ -29,7 +29,7 @@ On 2026-10-12, the cached user upload `IMG_2551.jpeg` was recovered and copied b
 
 [Photograph provenance](photograph-provenance.json) records the original upload name, visible content, recovery scope, SHA256 digest, and authenticity limits. [photographs.sha256](photographs.sha256) is a separate inventory for all 26 preserved JPEG uploads; it does not modify the original ten-file manifest. From this directory, verify the photographs with `sha256sum -c photographs.sha256`.
 
-The following additional uploads now provide the SSH setup, loopback binding, journal collection, positive detector result, and individual log-hash photographs. The remaining photo gaps are identified below. Preserving supplied upload bytes does not independently authenticate camera acquisition or pre-upload editing history.
+The following additional uploads now provide the SSH setup, loopback binding, journal collection, positive detector result, and individual log-hash photographs. The user-confirmed collection scope and checks supported by text records are documented below. Preserving supplied upload bytes does not independently authenticate camera acquisition or pre-upload editing history.
 
 ## Additional original terminal photographs
 
@@ -60,7 +60,7 @@ The user supplied **20 additional JPEG photographs on 2026-10-12**. Each is copi
 
 Photos 2–7 document the initial wildcard configuration; Photo 8 shows the later loopback configuration and listener. Photos 12 and 16 show the original export commands and displayed records. Photos 13 and 17 show individual log hashes matching the unchanged original manifest. Photos 17–18 depict intermediate detector stages whose source versions are unavailable; Photos 19–20 show the final positive result. The photographed Kali Python version is **3.14.7**, distinct from the historical Windows replay version.
 
-The second batch below supplies the negative and outside-window test photographs. Individual hashes in first-batch Photos 13 and 17 do not establish the complete ten-file check; its final photograph remains unavailable.
+The second batch below supplies the negative and outside-window test photographs. Individual hashes in first-batch Photos 13 and 17 show two file checks. The complete ten-file check is supported by the preserved text validation and transcript records.
 
 ## Negative and synthetic boundary-test photographs
 
@@ -76,7 +76,9 @@ The second supplied batch, labeled Photo 1.jpg through Photo 5.jpg, is indexed a
 
 Catalog 25 shows the same exact-boundary terminal view as [the recovered JPEG](SOC-004-exact-boundary-terminal-original.jpeg), but its SHA256 digest and dimensions differ. Both uploads remain intact; separate photographic acquisition is not established. The count describes preserved files, not independent observations.
 
-The negative and outside-window photo gaps are now resolved. Only a photograph of the final detector syntax/complete ten-file checksum check remains unavailable. The preserved integrity and replay records continue to support those checks; no missing image is represented as supplied.
+On **2026-10-12**, the user confirmed that the supplied photographs are **all the photos they took, starting from step 1 SSH setup/binding**. This is the complete user-reported photo collection; no further photo uploads are expected.
+
+The final detector syntax and complete ten-file checksum check are supported by [the preserved validation record](original-evidence-validation.json) and [the user-reported checksum transcript](user-reported-sha256-check.txt). Those checks are not shown in this photographic set.
 
 ## Source and integrity
 
