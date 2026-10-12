@@ -4,7 +4,7 @@
 **Investigation type:** Linux SSH journal analysis and Python detection validation  
 **Environment:** Kali Linux VM `kali-soc-lab`, lab account `analyst`, localhost `127.0.0.1`  
 **Disposition:** Authorized lab activity; no confirmed real-world security incident  
-**Evidence basis:** Ten transferred source/log/result files, their original SHA256 manifest, the historically attributed exact user-pasted detector source, independently reproduced results, and 21 preserved user-supplied terminal photographs covering setup, original journal collection, detector development, positive detection and the synthetic exact-boundary test.
+**Evidence basis:** Ten transferred source/log/result files, their original SHA256 manifest, the historically attributed exact user-pasted detector source, independently reproduced results, and 26 preserved JPEG uploads covering setup, original journal collection, detector development, and all four original detector scenarios; the boundary fixtures are synthetic.
 
 ## Objective and scope
 
@@ -30,11 +30,11 @@ On **2026-10-12**, the original cached upload `IMG_2551.jpeg` was recovered from
 
 *The photograph shows three synthetic failure records at 13:58:20, 13:58:50, and 13:59:20 (`-04:00`), followed by three parsed events and one alert spanning exactly 60 seconds. The displayed input and result agree with the preserved [exact-boundary fixture](../evidence/SOC-004/ssh-exact-boundary-test.log) and [saved result](../evidence/SOC-004/ssh-exact-boundary-test-result.log). The constructed timestamps describe the test input, not camera acquisition or live SSH activity.*
 
-Twenty additional original uploads are now preserved and indexed below. Photographs of the negative and outside-window tests and the final detector syntax/complete ten-file checksum check remain unavailable. These supplied photographs do not independently establish camera-original edit history or a continuous pre-upload chain of custody.
+Two supplied batches totaling 25 JPEG uploads are now preserved and indexed below, in addition to the recovered exact-boundary JPEG. All four original scenario results now have photographed views. Only the final detector syntax/complete ten-file checksum photograph remains unavailable. The latest exact-boundary upload depicts the same terminal view as the cached JPEG with different bytes; the 26-file count does not assert 26 independent camera acquisitions.
 
 ### Twenty additional supplied photographs
 
-The user supplied these JPEGs directly on **2026-10-12**, labeled Photo 1.jpg through Photo 20.jpg. Their uploaded bytes and metadata are preserved unchanged. The [photograph provenance](../evidence/SOC-004/photograph-provenance.json) maps every label to its repository filename and digest; the [photograph inventory](../evidence/SOC-004/photographs.sha256) now verifies **21 files**, including the separately recovered exact-boundary photograph. Upload numbering is retained without claiming authenticated acquisition chronology.
+The user supplied these JPEGs directly on **2026-10-12**, labeled Photo 1.jpg through Photo 20.jpg. Their uploaded bytes and metadata are preserved unchanged. The [photograph provenance](../evidence/SOC-004/photograph-provenance.json) maps every label to its repository filename and digest; the [photograph inventory](../evidence/SOC-004/photographs.sha256) now verifies **26 JPEG files**, including the separately recovered exact-boundary photograph. Upload numbering is retained without claiming authenticated acquisition chronology.
 
 | Upload | Original photograph | Visible content and limits |
 | --- | --- | --- |
@@ -87,6 +87,34 @@ Photos 19–20 show the final positive result: four parsed events, a threshold o
 
 *Photo 19: the final three original failed-password events span 19 seconds and produce one alert. The older 13:58:20 event is counted among four parsed events but expires from the alert window.*
 
+### Negative and synthetic boundary-test uploads
+
+The second supplied batch is cataloged as **21–25**, while retaining its user-facing labels Photo 1.jpg through Photo 5.jpg. Each uploaded JPEG is preserved unchanged, with its batch identity and byte digest in the [provenance record](../evidence/SOC-004/photograph-provenance.json).
+
+| Catalog / second-batch upload | Original image | Visible content and limits |
+| --- | --- | --- |
+| 21 / Photo 1 | [Negative subset extraction and result](../evidence/SOC-004/SOC-004-21-negative-test-original.jpg) | The terminal shows head -n 2 extracting the first two original repeated-failure records to ssh-negative-test.log, followed by wc/cat and a detector run reporting two parsed events and zero alerts. The records are 486 seconds apart; this does not isolate two failures within one 60-second window. |
+| 22 / Photo 2 | [Synthetic outside-window fixture creation](../evidence/SOC-004/SOC-004-22-outside-window-fixture-original.jpg) | A visible generator fragment retains the suffixes of the first three source records and replaces their timestamps with start + 61 seconds × index. Its displayed ssh-boundary-test.log contains 13:58:20, 13:59:21 and 14:00:22 (-04:00), agreeing with the preserved synthetic fixture. The full generator source is not visible or recovered as a file. |
+| 23 / Photo 3 | [Synthetic outside-window detector result](../evidence/SOC-004/SOC-004-23-outside-window-result-original.jpg) | The terminal shows the constructed three-record fixture and a detector invocation piped through tee to ssh-boundary-test-result.log. The result reports three parsed events and zero alerts, agreeing with the saved result. These timestamps are synthetic test values, not live authentication events. |
+| 24 / Photo 4 | [Synthetic exact-boundary fixture creation](../evidence/SOC-004/SOC-004-24-exact-boundary-fixture-original.jpg) | A visible generator fragment uses offsets [0, 30, 60], retaining source-record suffixes while replacing timestamps. The displayed records at 13:58:20, 13:58:50 and 13:59:20 (-04:00) agree with the preserved synthetic exact-boundary fixture. Only a generator fragment is visible. |
+| 25 / Photo 5 | [Exact-boundary result, second upload](../evidence/SOC-004/SOC-004-25-exact-boundary-result-upload-original.jpg) | The terminal shows the synthetic exact-boundary fixture and a detector invocation piped through tee to ssh-exact-boundary-test-result.log. Three parsed events produce one alert from 13:58:20 to 13:59:20 (-04:00), agreeing with the saved result. This depicts the same terminal view as the earlier recovered JPEG; the uploaded bytes differ, and a separate acquisition is not authenticated. |
+
+Second-batch Photo 1 supplies the previously unavailable negative-subset command: `head -n 2` selects the first two original repeated-failure records. Its detector output shows two events and zero alerts, matching the preserved [negative input](../evidence/SOC-004/ssh-negative-test.log) and [saved result](../evidence/SOC-004/ssh-negative-test-result.log). The events are 486 seconds apart, so the count and window conditions are not isolated by this historical test.
+
+![Second-batch original Photo 1 showing negative-subset extraction and zero detector alerts](../evidence/SOC-004/SOC-004-21-negative-test-original.jpg)
+
+*Catalog 21 / second-batch Photo 1: two original selected records, two parsed events, zero alerts. The photographed extraction command supplements the previously established byte-identical subset relationship.*
+
+Second-batch Photos 2–3 show the **synthetic outside-window fixture** with timestamps at offsets 0, 61 and 122 seconds, then three parsed events and zero alerts. Photo 2 shows a generator fragment replacing timestamp prefixes while preserving the remaining fields of the first three source records. The visible records and result agree with [ssh-boundary-test.log](../evidence/SOC-004/ssh-boundary-test.log) and [its saved output](../evidence/SOC-004/ssh-boundary-test-result.log).
+
+![Second-batch original Photo 3 showing the synthetic outside-window test and zero alerts](../evidence/SOC-004/SOC-004-23-outside-window-result-original.jpg)
+
+*Catalog 23 / second-batch Photo 3: three constructed timestamps 61 seconds apart yield zero alerts. These test timestamps do not establish historical live authentication events.*
+
+Second-batch Photos 4–5 show the **synthetic exact-boundary fixture** with offsets 0, 30 and 60 seconds and a result of three events and one alert, agreeing with the preserved [fixture](../evidence/SOC-004/ssh-exact-boundary-test.log) and [saved result](../evidence/SOC-004/ssh-exact-boundary-test-result.log). Only fragments of the boundary generators are visible; the complete original generator source files and the source/destination setup omitted from the photographs have not been recovered. No generator file is reconstructed from these photographs.
+
+Catalog 25 / second-batch Photo 5 shows the same exact-boundary terminal view as the previously [recovered JPEG](../evidence/SOC-004/SOC-004-exact-boundary-terminal-original.jpeg), with different SHA256 bytes and dimensions. Both supplied versions are retained; independent acquisition is not asserted. The repository now holds **26 preserved JPEG files**, including those two views, rather than evidence of 26 separate acquisitions.
+
 ## Detector source and behavior
 
 The historical runnable [detector under `detections/SOC-004/`](../detections/SOC-004/ssh_detector.py) is preserved unchanged. The earlier publication identified it as the exact user-pasted text; the cached conversation available to this remediation does not expose that source text, so this attribution is retained as a historical publication claim rather than newly authenticated. The [transferred original `ssh_detector.py`](../evidence/SOC-004/ssh_detector.py) is also preserved with the evidence, so its original manifest entry can be verified without modifying paths or file bytes.
@@ -108,7 +136,7 @@ The detector:
 | [`ssh-first-failure.log`](../evidence/SOC-004/ssh-first-failure.log) | Original localhost SSH journal excerpt: password check, PAM failure, failed password, and pre-authentication connection closure |
 | [`ssh-repeated-failures.log`](../evidence/SOC-004/ssh-repeated-failures.log) | Original localhost SSH journal selection: four failed-password records |
 | [`ssh-detection-alert.log`](../evidence/SOC-004/ssh-detection-alert.log) | Derived detector output for the original repeated-failures selection |
-| [`ssh-negative-test.log`](../evidence/SOC-004/ssh-negative-test.log) | Journal-derived negative test subset: byte-identical records to the first two lines of the repeated-failures selection; the original extraction command was not supplied |
+| [`ssh-negative-test.log`](../evidence/SOC-004/ssh-negative-test.log) | Journal-derived negative test subset: byte-identical records to the first two lines of the repeated-failures selection; the second-batch Photo 1 now shows extraction with `head -n 2` |
 | [`ssh-negative-test-result.log`](../evidence/SOC-004/ssh-negative-test-result.log) | Derived detector output for the negative subset |
 | [`ssh-boundary-test.log`](../evidence/SOC-004/ssh-boundary-test.log) | **Synthetic** boundary fixture with failures 61 seconds apart; not original journal evidence |
 | [`ssh-boundary-test-result.log`](../evidence/SOC-004/ssh-boundary-test-result.log) | Derived detector output for the synthetic outside-window fixture |
@@ -149,7 +177,7 @@ The original negative fixture is below threshold and also outside the window; it
 
 For each original scenario, parsed counts and alert totals were checked, and **the complete rerun output matched the saved Kali result log** after normalizing CRLF to LF for comparison. The published original evidence bytes were not normalized or edited.
 
-[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The previously reviewed exact-boundary terminal photograph has now been recovered and is linked above for reinspection. It shows three parsed events and one alert, consistent with the preserved synthetic fixture and saved result. The newly supplied positive-test photographs also corroborate its preserved result. The negative and outside-window scenario photographs remain unavailable; their public basis continues to be the supplied inputs, saved outputs and independent replay records.
+[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The previously reviewed exact-boundary terminal photograph has now been recovered and is linked above for reinspection. It shows three parsed events and one alert, consistent with the preserved synthetic fixture and saved result. The newly supplied positive-test photographs also corroborate its preserved result. The second batch now supplies negative and outside-window result photographs, and the latest exact-boundary view also agrees with its preserved fixture and result. All four scenario results have photographic views alongside the preserved inputs, saved outputs and independent replay records.
 
 The [earlier preparation-run results](../evidence/SOC-004/publication-preparation-validation.json) remain separately labeled. They used freshly generated artificial inputs with a 2000-01-01 baseline and do not replace the user's Kali evidence or its saved outputs. The exact old generator/input bytes were not preserved, so that historical preparation run cannot be independently reconstructed in full.
 
