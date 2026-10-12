@@ -72,3 +72,68 @@ The observed DNS responses, two TCP connections to port 443, and Client Hello SN
 - Interpret Wireshark protocol hierarchy as nested, not additive.
 - Correlate conversations with TCP stream indexes and TLS Client Hello messages.
 - Distinguish normal-looking traffic from a proven absence of compromise.
+
+
+## Photographic evidence gallery
+
+These are user-supplied photographs of the Kali terminal and Wireshark screen, processed for readability. They document visible application output; they are not raw packet exports, independently authenticated captures, or AI-generated recreations. The underlying PCAP remains private.
+
+### Evidence 01 — Network interface discovery: eth0 UP and installed capture tools.
+
+![Network interface discovery: eth0 UP and installed capture tools.](../evidence/SOC-003/SOC-003-01-network-interface.png)
+
+*Network interface discovery: eth0 UP and installed capture tools.*
+
+### Evidence 02 — Initial tcpdump capture and packet summary.
+
+![Initial tcpdump capture and packet summary.](../evidence/SOC-003/SOC-003-02-live-packet-capture.png)
+
+*Initial tcpdump capture and packet summary.*
+
+### Evidence 03 — Saved 50-packet PCAP and local file listing.
+
+![Saved 50-packet PCAP and local file listing.](../evidence/SOC-003/SOC-003-03-saved-pcap.png)
+
+*Saved 50-packet PCAP and local file listing.*
+
+### Evidence 04 — Wireshark packet list showing DNS, TCP, TLS, and ICMPv6.
+
+![Wireshark packet list showing DNS, TCP, TLS, and ICMPv6.](../evidence/SOC-003/SOC-003-03a-packet-list-overview.png)
+
+*Wireshark packet list showing DNS, TCP, TLS, and ICMPv6.*
+
+### Evidence 05 — Protocol hierarchy statistics for 50 captured frames.
+
+![Protocol hierarchy statistics for 50 captured frames.](../evidence/SOC-003/SOC-003-04-protocol-hierarchy.png)
+
+*Protocol hierarchy statistics for 50 captured frames.*
+
+### Evidence 06 — Two TCP conversations with the same remote IP and destination port 443.
+
+![Two TCP conversations with the same remote IP and destination port 443.](../evidence/SOC-003/SOC-003-05-tcp-conversations.png)
+
+*Two TCP conversations with the same remote IP and destination port 443.*
+
+### Evidence 07 — TLS Client Hello and Mozilla settings SNI details.
+
+![TLS Client Hello and Mozilla settings SNI details.](../evidence/SOC-003/SOC-003-06-tls-client-hello.png)
+
+*TLS Client Hello and Mozilla settings SNI details.*
+
+### Evidence 08 — Second Client Hello SNI inspection, packet 16.
+
+![Second Client Hello SNI inspection, packet 16.](../evidence/SOC-003/SOC-003-06a-tls-client-hello-packet-16.png)
+
+*Second Client Hello SNI inspection, packet 16.*
+
+### Evidence 09 — TCP stream index 1 inspection for packet 14.
+
+![TCP stream index 1 inspection for packet 14.](../evidence/SOC-003/SOC-003-07-tcp-stream-details.png)
+
+*TCP stream index 1 inspection for packet 14.*
+
+### Evidence 10 — TCP stream 0 Client Hello verification for packet 16.
+
+![TCP stream 0 Client Hello verification for packet 16.](../evidence/SOC-003/SOC-003-08-tcp-stream-verification.png)
+
+*TCP stream 0 Client Hello verification for packet 16.*
