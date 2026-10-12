@@ -17,6 +17,7 @@ Hands-on, isolated cybersecurity exercises focused on Linux security monitoring,
 | SOC-001 | Failed privileged authentication investigation | Completed | Written case report; exact timestamps/log excerpts pending |
 | SOC-002 | Suspicious process investigation | Completed controlled exercise | Process metadata, ancestry, socket and package checks; four enhanced original photographs |
 | SOC-003 | Network traffic investigation | Completed controlled exercise | 50-packet tcpdump capture, Wireshark protocol and TCP/TLS analysis; ten photographic evidence images |
+| SOC-004 | Automated SSH authentication failure detection | Completed controlled exercise | Original localhost journal evidence, labeled synthetic fixtures, saved results, exact detector source, and verified ten-file SHA256 manifest |
 
 ### SOC-001: Failed privileged authentication
 An authorized test of a failed `sudo` authentication followed by a successful `sudo` action. Linux journal records were reviewed to correlate the sequence and assess whether it represented a real security incident.
@@ -33,12 +34,18 @@ An authorized Kali Linux baseline exercise using tcpdump and Wireshark to analyz
 
 [Read the SOC-003 case report](investigations/SOC-003-network-traffic-investigation.md)
 
+### SOC-004: Automated SSH authentication failure detection
+An authorized localhost SSH exercise with a Python detector for three failures from the same source IP and username within an inclusive 60-second window. The four original positive, negative, outside-window, and exact-boundary scenarios reproduce their saved outputs; all ten supplied artifact hashes match the original SHA256 manifest. The report distinguishes original journal evidence, journal-derived test subsets, synthetic boundary fixtures, and detector results.
+
+[Read the SOC-004 case report](investigations/SOC-004-automated-ssh-detection.md)
+
 ## Skills practiced
 - Linux command-line administration and journal log review
 - Authentication event analysis and timeline correlation
 - Differentiating controlled test activity from potentially suspicious behavior
 - Network packet capture with tcpdump and protocol/conversation analysis in Wireshark
 - TCP handshake, DNS, and TLS Client Hello/SNI interpretation
+- Python log parsing, sliding-window detection, and threshold/boundary validation
 - Writing investigation notes with evidence limitations
 
 ## Scope and ethics

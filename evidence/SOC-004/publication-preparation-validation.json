@@ -1,0 +1,56 @@
+{
+  "provenance": "New synthetic inputs generated for this publication-preparation run; not the user Kali logs",
+  "validation_date": "2026-10-12",
+  "runtime": "Python 3.14.8 on Windows",
+  "verbatim_conversation_source": "PASS",
+  "syntax_compile": "PASS",
+  "scenarios": [
+    {
+      "scenario": "within-window",
+      "offsets_seconds": [
+        0,
+        30,
+        59
+      ],
+      "parsed_events": 3,
+      "expected_alerts": 1,
+      "actual_alerts": 1,
+      "status": "PASS"
+    },
+    {
+      "scenario": "below-threshold",
+      "offsets_seconds": [
+        0,
+        30
+      ],
+      "parsed_events": 2,
+      "expected_alerts": 0,
+      "actual_alerts": 0,
+      "status": "PASS"
+    },
+    {
+      "scenario": "outside-window",
+      "offsets_seconds": [
+        0,
+        30,
+        61
+      ],
+      "parsed_events": 3,
+      "expected_alerts": 0,
+      "actual_alerts": 0,
+      "status": "PASS"
+    },
+    {
+      "scenario": "exact-boundary",
+      "offsets_seconds": [
+        0,
+        30,
+        60
+      ],
+      "parsed_events": 3,
+      "expected_alerts": 1,
+      "actual_alerts": 1,
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "provenance": "Validation of the transferred Kali evidence bytes against the supplied original manifest; original inputs replayed on both preserved source copies",
+  "validation_date": "2026-10-12",
+  "runtime": "Python 3.14.8 on Windows",
+  "manifest": "SHA256SUMS.txt",
+  "manifest_entry_count": 10,
+  "hash_checks": [
+    {
+      "file": "ssh_detector.py",
+      "expected_sha256": "b9605e5c1c4f4a0cb14c3642c5cddea936b6d900599db0879ce35ea8385154c5",
+      "actual_sha256": "b9605e5c1c4f4a0cb14c3642c5cddea936b6d900599db0879ce35ea8385154c5",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-first-failure.log",
+      "expected_sha256": "62f164b5f79635497f760846bbe03f7550b7fde0beab0b73c965245f2c856f24",
+      "actual_sha256": "62f164b5f79635497f760846bbe03f7550b7fde0beab0b73c965245f2c856f24",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-repeated-failures.log",
+      "expected_sha256": "c5e02862d9dbd5a90bd8943487104d0784b13080a78b5e457a561ff98ecebc55",
+      "actual_sha256": "c5e02862d9dbd5a90bd8943487104d0784b13080a78b5e457a561ff98ecebc55",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-detection-alert.log",
+      "expected_sha256": "3258e919892118402decb75d073020a6cf1b3a0e85393f8803bdd0521027ab1b",
+      "actual_sha256": "3258e919892118402decb75d073020a6cf1b3a0e85393f8803bdd0521027ab1b",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-negative-test.log",
+      "expected_sha256": "d339592639d962a6f83fdc64926f7f9afe016753b41b5868ab3d74d8d368c0d8",
+      "actual_sha256": "d339592639d962a6f83fdc64926f7f9afe016753b41b5868ab3d74d8d368c0d8",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-negative-test-result.log",
+      "expected_sha256": "db3235ec921c06c0bb77b580f106d93b7ebc4d1adce4908c3b2152381ed1587e",
+      "actual_sha256": "db3235ec921c06c0bb77b580f106d93b7ebc4d1adce4908c3b2152381ed1587e",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-boundary-test.log",
+      "expected_sha256": "2dc00a711e685bfaee2100870d5c4637683201dfd17cab7fb54cfcc632c28b8e",
+      "actual_sha256": "2dc00a711e685bfaee2100870d5c4637683201dfd17cab7fb54cfcc632c28b8e",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-boundary-test-result.log",
+      "expected_sha256": "acc989a0025c5e92b4b6c2f85cdfefebfb838f217b2d9b2cf6ecebe54c31f20f",
+      "actual_sha256": "acc989a0025c5e92b4b6c2f85cdfefebfb838f217b2d9b2cf6ecebe54c31f20f",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-exact-boundary-test.log",
+      "expected_sha256": "3e32bf4654a785b688314a39e4aca35772837e29e989cd0810fe125f0af64274",
+      "actual_sha256": "3e32bf4654a785b688314a39e4aca35772837e29e989cd0810fe125f0af64274",
+      "status": "PASS"
+    },
+    {
+      "file": "ssh-exact-boundary-test-result.log",
+      "expected_sha256": "edf43364c43d0b21eab497051a1c9fb177033985e96e7117c2b2ef7cd5dc2ad9",
+      "actual_sha256": "edf43364c43d0b21eab497051a1c9fb177033985e96e7117c2b2ef7cd5dc2ad9",
+      "status": "PASS"
+    }
+  ],
+  "syntax_compile": {
+    "conversation": "PASS",
+    "transferred": "PASS"
+  },
+  "source_relationship": "Transferred detector equals one leading LF + exact pasted source + two trailing LF bytes; no other differences",
+  "stdout_comparison": "Complete UTF-8 output compared after CRLF-to-LF normalization; stored evidence bytes unchanged",
+  "negative_fixture_relationship": "Byte-identical records to the first two lines of ssh-repeated-failures.log; original extraction command not supplied",
+  "scenarios": [
+    {
+      "scenario": "positive",
+      "input_file": "ssh-repeated-failures.log",
+      "saved_result_file": "ssh-detection-alert.log",
+      "status": "PASS",
+      "runs": [
+        {
+          "source": "conversation",
+          "parsed_events": 4,
+          "total_alerts": 1,
+          "saved_output_comparison": "PASS"
+        },
+        {
+          "source": "transferred",
+          "parsed_events": 4,
+          "total_alerts": 1,
+          "saved_output_comparison": "PASS"
+        }
+      ]
+    },
+    {
+      "scenario": "negative",
+      "input_file": "ssh-negative-test.log",
+      "saved_result_file": "ssh-negative-test-result.log",
+      "status": "PASS",
+      "runs": [
+        {
+          "source": "conversation",
+          "parsed_events": 2,
+          "total_alerts": 0,
+          "saved_output_comparison": "PASS"
+        },
+        {
+          "source": "transferred",
+          "parsed_events": 2,
+          "total_alerts": 0,
+          "saved_output_comparison": "PASS"
+        }
+      ]
+    },
+    {
+      "scenario": "outside-window",
+      "input_file": "ssh-boundary-test.log",
+      "saved_result_file": "ssh-boundary-test-result.log",
+      "status": "PASS",
+      "runs": [
+        {
+          "source": "conversation",
+          "parsed_events": 3,
+          "total_alerts": 0,
+          "saved_output_comparison": "PASS"
+        },
+        {
+          "source": "transferred",
+          "parsed_events": 3,
+          "total_alerts": 0,
+          "saved_output_comparison": "PASS"
+        }
+      ]
+    },
+    {
+      "scenario": "exact-boundary",
+      "input_file": "ssh-exact-boundary-test.log",
+      "saved_result_file": "ssh-exact-boundary-test-result.log",
+      "status": "PASS",
+      "runs": [
+        {
+          "source": "conversation",
+          "parsed_events": 3,
+          "total_alerts": 1,
+          "saved_output_comparison": "PASS"
+        },
+        {
+          "source": "transferred",
+          "parsed_events": 3,
+          "total_alerts": 1,
+          "saved_output_comparison": "PASS"
+        }
+      ]
+    }
+  ]
+}

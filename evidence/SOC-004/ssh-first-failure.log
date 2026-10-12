@@ -1,0 +1,4 @@
+2026-10-12T13:58:18-04:00 kali-soc-lab unix_chkpwd[123816]: password check failed for user (analyst)
+2026-10-12T13:58:18-04:00 kali-soc-lab sshd-session[123710]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=analyst
+2026-10-12T13:58:20-04:00 kali-soc-lab sshd-session[123710]: Failed password for analyst from 127.0.0.1 port 33040 ssh2
+2026-10-12T13:58:20-04:00 kali-soc-lab sshd-session[123710]: Connection closed by authenticating user analyst 127.0.0.1 port 33040 [preauth]
