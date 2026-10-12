@@ -3,7 +3,7 @@
 **Status:** Completed controlled exercise  
 **Investigation type:** Linux process triage, ancestry review, socket snapshot, and package checks  
 **Disposition:** Authorized controlled simulation / no confirmed security incident  
-**Evidence status:** User-provided lab observations and terminal output; no screenshots supplied or claimed.
+**Evidence status:** User-provided lab observations and four enhanced photographs of the original terminal display. The photographs were cropped and adjusted for readability; original log text was not regenerated.
 
 ## Objective and scope
 
@@ -58,7 +58,29 @@ The follow-up shares parent PID `2263` with the initial process. The ancestry sh
 | `dpkg -S /usr/bin/sleep` | `coreutils: /usr/bin/sleep` |
 | `dpkg -V coreutils` | No output |
 
-The empty results are recorded as reported observations. No unfiltered socket listing, command exit status, or screenshot was supplied.
+The empty results are recorded as reported observations. No unfiltered socket listing or command exit status was supplied. The behavioral-analysis photograph documents the filtered command and associated package-ownership check; the `dpkg -V coreutils` result was separately user-reported.
+
+## Photographic evidence
+
+The following images are enhanced versions of user-supplied phone photographs of the Kali terminal (cropping, brightness, contrast, and sharpness adjustments). They are **not AI-generated reconstructions**. They supplement, rather than replace, the reported terminal output.
+
+**Evidence 1 — Process discovery (PID 3184)**
+
+![SOC-002 process discovery](../SOC-002-01-process-discovery.png)
+
+**Evidence 2 — Process metadata (PID 3184)**
+
+![SOC-002 process metadata](../SOC-002-02-process-metadata.png)
+
+**Evidence 3 — Parent process and ancestry**
+
+![SOC-002 process ancestry](../SOC-002-03-process-ancestry.png)
+
+**Evidence 4 — Follow-up process, socket filter, and package ownership (PID 13846)**
+
+![SOC-002 behavioral analysis](../SOC-002-04-behavioral-analysis.png)
+
+The reported no-output result of `dpkg -V coreutils` is not independently substantiated by these four photographs.
 
 ## Analysis
 
@@ -90,7 +112,7 @@ No further incident escalation is warranted on this evidence for the authorized 
 
 - No absolute collection timestamps or timezone were supplied; only process elapsed times are documented.
 - The two process snapshots are separate observations; the follow-up checks are not attributed retroactively to PID `3184`.
-- No screenshots, raw exported evidence files, or independent reproduction are claimed.
+- Four enhanced photographs are linked; no original unedited digital screenshots, raw exported evidence files, or independent reproduction are claimed.
 - No broader host compromise assessment, persistence review, or continuous network monitoring is claimed.
 
 ## Lessons learned
