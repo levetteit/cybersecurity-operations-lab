@@ -24,7 +24,7 @@ Hash matching confirms that the transferred bytes agree with the supplied manife
 
 ## Detector source and behavior
 
-The runnable [detector under `detections/SOC-004/`](../detections/SOC-004/ssh_detector.py) remains the **exact text pasted by the user**. The [transferred original `ssh_detector.py`](../evidence/SOC-004/ssh_detector.py) is also preserved with the evidence, so its original manifest entry can be verified without modifying paths or file bytes.
+The historical runnable [detector under `detections/SOC-004/`](../detections/SOC-004/ssh_detector.py) is preserved unchanged. The earlier publication identified it as the exact user-pasted text; the cached conversation available to this remediation does not expose that source text, so this attribution is retained as a historical publication claim rather than newly authenticated. The [transferred original `ssh_detector.py`](../evidence/SOC-004/ssh_detector.py) is also preserved with the evidence, so its original manifest entry can be verified without modifying paths or file bytes.
 
 The transferred source equals one leading LF byte, the exact pasted text, and two trailing LF bytes. There are no other differences. Both source copies passed syntax compilation and produced the same results on all four original scenario inputs. The separate copies preserve the chat source and the original file's hash without changing either.
 
@@ -84,9 +84,11 @@ The original negative fixture is below threshold and also outside the window; it
 
 For each original scenario, parsed counts and alert totals were checked, and **the complete rerun output matched the saved Kali result log** after normalizing CRLF to LF for comparison. The published original evidence bytes were not normalized or edited.
 
-[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The user-supplied exact-boundary terminal photograph reviewed earlier also showed three parsed events and one alert from 13:58:20 to 13:59:20, consistent with the transferred synthetic fixture and result.
+[Original-evidence validation results](../evidence/SOC-004/original-evidence-validation.json) record all ten hashes, both syntax results, source-copy differences, and the four replay comparisons. The earlier report says an exact-boundary terminal photograph was reviewed and showed three parsed events and one alert. No SOC-004 photograph is published or available for independent reinspection in this remediation. The public basis is the preserved synthetic fixture and saved result, which can be replayed; no photograph or historical record has been fabricated to fill the gap.
 
-The [earlier preparation-run results](../evidence/SOC-004/publication-preparation-validation.json) remain separately labeled. They used freshly generated artificial inputs with a 2000-01-01 baseline and do not replace the user's Kali evidence or its saved outputs.
+The [earlier preparation-run results](../evidence/SOC-004/publication-preparation-validation.json) remain separately labeled. They used freshly generated artificial inputs with a 2000-01-01 baseline and do not replace the user's Kali evidence or its saved outputs. The exact old generator/input bytes were not preserved, so that historical preparation run cannot be independently reconstructed in full.
+
+The [new synthetic test package](../tests/SOC-004/README.md) separately preserves a deterministic generator, inputs, expected outputs, and an output-checking runner. It includes two failures within 30 seconds, plus within-window, outside-window, exact-boundary, grouping, sorting, and deduplication cases. It uses the recorded old offsets for four new fixtures without claiming to recover the old fixture bytes. New files remain outside the unchanged original manifest.
 
 ## Syntax and ten-file SHA256 verification
 
@@ -97,7 +99,7 @@ The [user-reported ten-line check](../evidence/SOC-004/user-reported-sha256-chec
 From the repository root, the following Linux commands reproduce syntax and original-file integrity checks:
 
 ```sh
-python3 -m py_compile detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh_detector.py
+python3 tests/SOC-004/run_tests.py
 (
   cd evidence/SOC-004
   sha256sum -c SHA256SUMS.txt
@@ -115,7 +117,13 @@ python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-boundary-test.lo
 python3 detections/SOC-004/ssh_detector.py evidence/SOC-004/ssh-exact-boundary-test.log
 ```
 
-The expected alert totals are **1, 0, 0, 1**, respectively.
+The expected alert totals are **1, 0, 0, 1**, respectively. The test runner compiles source in memory and compares complete outputs for both historical sources without adding caches to the evidence directory.
+
+## Newly proposed collection and optional hardened detector
+
+The [fresh-lab walkthrough](../docs/reproduction.md) documents loopback service prerequisites, ISO timestamp exports, new fixture generation, hashing and cleanup. Its commands are new proposals, not recovered historical commands, and no live authentication attempts were performed during this sprint.
+
+An optional [hardened detector](../detections/SOC-004/ssh_detector_v2.py) is a new implementation for future offline use. It requires an explicit input path and timezone-aware ISO timestamps, includes `invalid user` failed-password lines, reports skipped record counts on stderr, and exits 2 on unreadable input or malformed failed-password records before printing any detection result. Exit 0 means successful parsing/analysis within its documented format, not evidence that the host is clean. It preserves the inclusive 60-second rule and one-alert-per-pair behavior. Tests cover it separately; neither historical source nor historical saved output has been updated to represent this new behavior.
 
 ## Analysis and limitations
 
@@ -136,7 +144,7 @@ The report covers the supplied localhost excerpts and fixture results. It does n
 
 **Authorized controlled localhost exercise / no confirmed real-world security incident.** The transferred artifacts pass ten-file integrity verification, both syntax checks, and all four original scenario replays within the documented scope.
 
-The evidence, detector, results, report, and README index were prepared in a separate draft PR and held for user review. On **2026-10-12**, the user explicitly approved merging after the ten-file integrity checks, syntax checks, and all four original scenario replays passed. The required approval gate was satisfied before merge.
+The evidence, detector, results, report, and README index were prepared in a separate draft PR and held for user review. On **2026-10-12**, the user explicitly approved merging after the ten-file integrity checks, syntax checks, and all four original scenario replays passed. The required approval gate was satisfied before that historical merge (PR #10). The documentation remediation and new tests are a separate draft PR requiring new user review; that earlier approval does not authorize this sprint to merge.
 
 ## Lessons learned
 

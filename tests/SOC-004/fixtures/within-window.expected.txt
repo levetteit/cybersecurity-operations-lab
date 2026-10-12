@@ -1,0 +1,12 @@
+SOC-004 | Automated SSH Detection
+Events parsed: 3
+Detection threshold: 3 failures / 60 seconds
+
+[ALERT] Repeated SSH Authentication Failures
+Source IP: 127.0.0.1
+Target user: test-analyst
+Failed attempts: 3
+Window start: 2000-01-01T00:00:00+00:00
+Alert time: 2000-01-01T00:00:59+00:00
+
+Total alerts: 1

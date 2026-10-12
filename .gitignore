@@ -1,0 +1,25 @@
+# Python and local validation by-products
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Private acquisition material and local generated output
+private-evidence/
+local-output/
+*.pcap
+*.pcapng
+*.journal
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system noise
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.swp
+
+# Do not globally ignore *.log: curated historical and synthetic logs are tracked.

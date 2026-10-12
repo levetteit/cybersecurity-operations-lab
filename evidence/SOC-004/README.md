@@ -35,4 +35,6 @@ sha256sum -c SHA256SUMS.txt
 
 The manifest covers ten original artifacts; it does not cover the manifest itself or the additional report and validation files. Existing lab hostname/account and loopback values required no additional publication redaction. Hash matching confirms agreement with the supplied manifest, not independent authentication of the original collection.
 
+The [new synthetic test package](../../tests/SOC-004/README.md) and optional [hardened detector](../../detections/SOC-004/ssh_detector_v2.py) are separate additions outside this directory and the original manifest. The earlier preparation JSON remains unchanged; its old exact artificial inputs are unavailable. The mentioned SOC-004 terminal photograph is not published here.
+
 Read the [SOC-004 investigation report](../../investigations/SOC-004-automated-ssh-detection.md) for the timeline, scenario interpretation, and limitations. The user explicitly approved merging this publication on **2026-10-12**, after the draft and its completed verification were presented for review.

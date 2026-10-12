@@ -1,0 +1,44 @@
+{
+  "provenance": "New accurately named byte-identical copy of the already published user-supplied phone photograph, reusing its existing Git blob. No new acquisition or image processing.",
+  "source": {
+    "path": "SOC-001-authentication-evidence.png",
+    "sha256": "f4f456b33935e200c10e7224406c2d708a5977779d566abb54b1a7ce6ad49103",
+    "detected_format": "MPO",
+    "frames": [
+      {
+        "index": 0,
+        "dimensions": [
+          2074,
+          845
+        ],
+        "mode": "RGB",
+        "gps_exif_present": false
+      },
+      {
+        "index": 1,
+        "dimensions": [
+          1037,
+          423
+        ],
+        "mode": "L",
+        "gps_exif_present": false
+      }
+    ]
+  },
+  "limitations": [
+    "Original public bytes and metadata remain in both copies and Git history.",
+    "Filename correction does not redact visible text or strip camera metadata.",
+    "No claim of original acquisition authentication or journal timezone."
+  ],
+  "copy_date": "2026-10-12",
+  "inspection_tool": "Pillow 12.3.0",
+  "public_copy": {
+    "path": "evidence/SOC-001/SOC-001-terminal-original.mpo",
+    "sha256": "f4f456b33935e200c10e7224406c2d708a5977779d566abb54b1a7ce6ad49103",
+    "git_blob_sha": "561feac0d4738222f4e2bc6fce0e4f8225bb8195",
+    "format": "MPO",
+    "byte_identical_to_source": true,
+    "frames_preserved": 2,
+    "metadata_preserved": true
+  }
+}
