@@ -36,7 +36,8 @@ Inspect command errors and record their statuses. These versions are newly recor
 The account must require a password for `sudo`; `NOPASSWD` or policy restrictions may change this sequence. Clear this session's cached authorization, then invoke a harmless privileged command:
 
 ```bash
-soc001_start=$(date --iso-8601=seconds)
+soc001_start=$(date -u '+%Y-%m-%d %H:%M:%S.%6N UTC')
+printf 'start=%s\n' "$soc001_start" > "$collection_dir/soc001-times.txt"
 sudo -k
 sudo whoami
 printf 'sudo_whoami_exit=%s\n' "$?" > "$collection_dir/soc001-status.txt"
@@ -45,7 +46,8 @@ printf 'sudo_whoami_exit=%s\n' "$?" > "$collection_dir/soc001-status.txt"
 At the interactive prompt, enter one intentionally incorrect password, then the correct password at the next prompt. Do not type passwords into a command, script, recording, or repository file. If the policy ends the command after one failure, invoke `sudo whoami` again and authenticate correctly. Record what actually happened; no fixed 21-second interval or historical PID is expected.
 
 ```bash
-soc001_end=$(date --iso-8601=seconds)
+soc001_end=$(date -u '+%Y-%m-%d %H:%M:%S.%6N UTC')
+printf 'end=%s\n' "$soc001_end" >> "$collection_dir/soc001-times.txt"
 sudo journalctl --since "$soc001_start" --until "$soc001_end" --output=short-iso-precise --no-pager > "$collection_dir/soc001-journal.log"
 printf 'journal_export_exit=%s\n' "$?" >> "$collection_dir/soc001-status.txt"
 grep -E 'sudo\[|authentication failure' "$collection_dir/soc001-journal.log" > "$collection_dir/soc001-selected.log"
@@ -53,7 +55,7 @@ printf 'selection_exit=%s\n' "$?" >> "$collection_dir/soc001-status.txt"
 sudo -k
 ```
 
-Preserve the complete private export before creating a selection. Correlate actual PID, terminal, account, command, time and offset. Grep exit 1 means no match, not an authenticated clean result. See the [sudo manual](https://manpages.debian.org/bookworm/sudo/sudo.8.en.html) and [journalctl manual](https://manpages.debian.org/bookworm/systemd/journalctl.1.en.html).
+Preserve the complete private export before creating a selection. Query bounds use explicit UTC syntax accepted by journalctl; the export uses ISO timestamps with offsets. Correlate actual PID, terminal, account, command, time and offset. Grep exit 1 means no match, not an authenticated clean result. See the [sudo manual](https://manpages.debian.org/bookworm/sudo/sudo.8.en.html), [journalctl manual](https://manpages.debian.org/bookworm/systemd/journalctl.1.en.html), and [systemd time syntax](https://manpages.debian.org/bookworm/systemd/systemd.time.7.en.html).
 
 ## SOC-002: dynamic process selection and bounded checks
 
@@ -120,7 +122,8 @@ sudo ss -ltnp 'sport = :2222'
 If that port is already occupied, stop this example and choose a free loopback test port. If the key or server is absent, complete the package prerequisites first. Do not overwrite existing keys. Start the transient unit only after those checks pass:
 
 ```bash
-soc004_start=$(date --iso-8601=seconds)
+soc004_start=$(date -u '+%Y-%m-%d %H:%M:%S.%6N UTC')
+printf 'start=%s\n' "$soc004_start" > "$collection_dir/soc004-times.txt"
 sudo systemd-run --unit=soc004-loopback --collect /usr/sbin/sshd -D -e -f /dev/null -p 2222 -o ListenAddress=127.0.0.1 -o HostKey=/etc/ssh/ssh_host_ed25519_key -o PasswordAuthentication=yes -o KbdInteractiveAuthentication=no -o PubkeyAuthentication=no -o UsePAM=yes -o PermitRootLogin=no
 sudo systemctl status soc004-loopback --no-pager
 sudo ss -ltnp 'sport = :2222'
@@ -135,7 +138,8 @@ ssh -F /dev/null -4 -p 2222 -o UserKnownHostsFile="$collection_dir/known_hosts" 
 Actual authentication delays may prevent three events from fitting in 60 seconds. Inspect the real timestamps; use synthetic fixtures to test boundary conditions deterministically rather than altering the export.
 
 ```bash
-soc004_end=$(date --iso-8601=seconds)
+soc004_end=$(date -u '+%Y-%m-%d %H:%M:%S.%6N UTC')
+printf 'end=%s\n' "$soc004_end" >> "$collection_dir/soc004-times.txt"
 sudo journalctl -u soc004-loopback.service --since "$soc004_start" --until "$soc004_end" --output=short-iso-precise --no-pager > "$collection_dir/soc004-journal.log"
 printf 'journal_export_exit=%s\n' "$?" > "$collection_dir/soc004-status.txt"
 grep -F 'Failed password for ' "$collection_dir/soc004-journal.log" > "$collection_dir/soc004-failures.log"
