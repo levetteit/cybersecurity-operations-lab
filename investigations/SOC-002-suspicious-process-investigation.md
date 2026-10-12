@@ -82,6 +82,23 @@ The following images are enhanced versions of user-supplied phone photographs of
 
 The reported no-output result of `dpkg -V coreutils` is not independently substantiated by these four photographs.
 
+### Duplicate image archive
+
+The [SOC-002 ZIP](../SOC-002-enhanced-original-evidence.zip) contains exactly these four enhanced photographs under the internal directory `evidence/SOC-002/`:
+
+| ZIP member | Published equivalent |
+| --- | --- |
+| `evidence/SOC-002/SOC-002-01-process-discovery.png` | [Process discovery](../SOC-002-01-process-discovery.png) |
+| `evidence/SOC-002/SOC-002-02-process-metadata.png` | [Process metadata](../SOC-002-02-process-metadata.png) |
+| `evidence/SOC-002/SOC-002-03-process-ancestry.png` | [Process ancestry](../SOC-002-03-process-ancestry.png) |
+| `evidence/SOC-002/SOC-002-04-behavioral-analysis.png` | [Behavioral analysis](../SOC-002-04-behavioral-analysis.png) |
+
+CRC checks pass and each member is byte-identical to its root-level equivalent. The archive is redundant packaging; despite its filename, it adds no unedited originals, raw logs, or package-verification records. The internal directory describes ZIP layout, not a separate tracked repository folder.
+
+## Fresh collection
+
+The [newly proposed process walkthrough](../docs/reproduction.md) creates a fresh process, records its dynamic PID, package versions and exit statuses, and includes cleanup. These examples do not claim to be the commands used for the historical PIDs.
+
 ## Analysis
 
 ### Process metadata and ancestry

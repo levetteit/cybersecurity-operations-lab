@@ -3,7 +3,7 @@
 **Status:** Completed controlled exercise  
 **Environment:** Kali Linux VM (`kali-soc-lab`) in VirtualBox, NAT networking  
 **Investigation type:** Linux authentication log review and event correlation  
-**Evidence status:** Timestamped journal excerpts supplied and transcribed below; screenshots and independently exported raw log file remain pending.
+**Evidence status:** Supplied timestamped journal transcriptions and a published phone photograph of the terminal, linked below. An independently exported raw journal file is unavailable.
 
 ## Objective
 Generate and investigate an authorized failed privileged authentication attempt and determine whether the event should be treated as suspicious activity or expected test behavior.
@@ -38,7 +38,7 @@ Oct 10 13:28:10 kali-soc-lab sudo[6173]: pam_unix(sudo:session): session closed 
 Oct 10 13:28:32 kali-soc-lab sudo[6559]:  analyst : TTY=pts/0 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/journalctl -b --no-pager
 ```
 
-These excerpts were supplied from the user's lab output. They have not been independently verified against an exported journal file or screenshot.
+These excerpts were supplied from the user's lab output. The published terminal photograph visibly supports the listed timestamps, PIDs, and command sequence. Neither the live journal nor an independently exported journal file is available to authenticate acquisition; the event timezone remains unspecified.
 
 ## Analysis
 A single failed `sudo` authentication event can occur because of user error, an authorized test, or malicious attempts to gain elevated privileges. The nearby successful event and known testing context support classifying this sequence as authorized lab activity. The evidence described here does not establish brute-force activity, compromise, or unauthorized access.
@@ -61,23 +61,31 @@ sudo journalctl --since 'today' --no-pager | grep -Ei 'sudo|authentication failu
 
 These commands may require adapting the time range or journal access permissions.
 
-## Illustrative reconstruction
+## Original terminal photograph and provenance
 
-![AI-generated illustrative reconstruction of the SOC-001 terminal output](../SOC-001-illustrative-reconstruction.png)
+![Supplied SOC-001 terminal photograph in its preserved legacy path](../SOC-001-authentication-evidence.png)
 
-*Illustrative reconstruction, AI-generated from a phone photograph of the terminal. This image is not an original screenshot or primary forensic evidence. The timestamped journal excerpts above are the primary documented evidence.*
+*User-supplied phone photograph of the Kali terminal, showing the journal query and authentication sequence. The displayed file is the unchanged published original; no crop, text replacement, enhancement, or resizing was applied during this remediation. It is photographic evidence, not an unedited digital screenshot or an independently authenticated journal export.*
 
-## Evidence to add
+The [unchanged published original](../SOC-001-authentication-evidence.png) has a legacy `.png` filename but contains JPEG/MPO bytes with two frames, including an auxiliary grayscale terminal frame. Both frames are preserved in that file and in the [accurately named MPO copy](../evidence/SOC-001/SOC-001-terminal-original.mpo), which reuses the same repository blob. Camera/device/software and capture-time metadata remain in the original; no GPS fields were found in the audit or remediation inspection. Capture metadata does not establish the timezone of the journal events. The MPO copy retains both frames and all original metadata; no metadata stripping or visible-text redaction is claimed. See the [copy provenance record](../evidence/SOC-001/display-provenance.json) and [evidence handling policy](../docs/evidence-handling.md).
+
+## Archived AI illustration
+
+The [historical AI-generated reconstruction](../SOC-001-illustrative-reconstruction.png) is retained unchanged but removed from the evidence display. Its final session line incorrectly reads `dodo[6559]`; the photograph shows `sudo[6559]`. Use the photograph and transcribed records for that event. The image has no embedded illustration label and must not be shared detached from this provenance statement. It is not primary evidence.
+
+## Evidence status and remaining limits
 - [x] Timestamped failed authentication excerpt (user-supplied)
 - [x] Timestamped successful `sudo` excerpt (user-supplied)
 - [x] Event timeline based on recorded timestamps
 - [x] Correlation by PID, terminal and account; timestamp timezone not provided
-- [ ] Optional screenshot showing the journal query and matching results
+- [x] Published original terminal photograph and accurately named byte-identical MPO copy
+- [ ] Independently exported raw journal file and historical acquisition record (unavailable; not reconstructed)
 
 ## Lessons learned
 - Authentication failures require context before escalation.
 - Correlating adjacent events helps distinguish mistakes and controlled tests from potential threats.
 - A defensible case report records both the finding and what evidence is missing.
 
-## Next steps
-Improve the case with real log excerpts and timestamps. Keep SOC-002 on hold until explicitly resumed.
+## Future collection
+
+SOC-002 through SOC-004 now have published reports. New collections can record raw exports, absolute timestamps with timezone, and hashes following the [newly proposed walkthrough](../docs/reproduction.md). New records would supplement this case; they cannot recreate missing historical acquisition evidence.

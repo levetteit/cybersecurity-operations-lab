@@ -1,20 +1,21 @@
 # Cybersecurity Operations Lab
 
-Hands-on, isolated cybersecurity exercises focused on Linux security monitoring, event analysis, and incident triage.
+Hands-on cybersecurity exercises in a personally controlled NAT virtual machine with outbound Internet access, focused on Linux security monitoring, event analysis, and incident triage.
 
 ## Lab environment
 - Host: HP laptop (Intel Core i5-7200U, 8 GB RAM)
 - Hypervisor: Oracle VirtualBox
 - Guest: Kali Linux with Xfce, 2 GB RAM, 1 vCPU, 20 GB dynamically allocated disk
 - Guest hostname: `kali-soc-lab`; analyst account: `analyst`
-- Networking: NAT
+- Networking: NAT with outbound Internet access; no air gap is claimed. SOC-003 includes connections to public services.
+- Historical tool versions were not recorded completely; see the [reproduction guide](docs/reproduction.md) for prerequisites and version recording.
 
 ## Investigation index
 
 | ID | Exercise | Status | Evidence |
 | --- | --- | --- | --- |
-| LAB-001 | VirtualBox graphics warning investigation | Completed | Written summary; screenshots/log excerpts pending |
-| SOC-001 | Failed privileged authentication investigation | Completed | Written case report; exact timestamps/log excerpts pending |
+| LAB-001 | VirtualBox graphics warning investigation | Previously listed as completed; completion unverified in the published repository | No report, summary, logs, or photographs are published; see [publication status](investigations/LAB-001-publication-status.md) |
+| SOC-001 | Failed privileged authentication investigation | Completed controlled exercise | Timestamped transcriptions and original terminal photograph, with provenance and an accurately named MPO copy; raw journal export unavailable |
 | SOC-002 | Suspicious process investigation | Completed controlled exercise | Process metadata, ancestry, socket and package checks; four enhanced original photographs |
 | SOC-003 | Network traffic investigation | Completed controlled exercise | 50-packet tcpdump capture, Wireshark protocol and TCP/TLS analysis; ten photographic evidence images |
 | SOC-004 | Automated SSH authentication failure detection | Completed controlled exercise | Original localhost journal evidence, labeled synthetic fixtures, saved results, exact detector source, and verified ten-file SHA256 manifest |
@@ -49,10 +50,23 @@ An authorized localhost SSH exercise with a Python detector for three failures f
 - Writing investigation notes with evidence limitations
 
 ## Scope and ethics
-All activity was conducted in an isolated, personally controlled lab. No unauthorized access or real-world attack is claimed. This is a learning portfolio, not production SOC employment experience.
+The documented exercises used a personally controlled VirtualBox NAT VM with outbound Internet access. NAT does not imply an air gap; SOC-003 observes traffic to public services. Authentication simulations target the controlled VM and loopback, not external systems. No unauthorized access or real-world attack is claimed. This is a learning portfolio, not production SOC employment experience.
 
 ## Evidence policy
-Reports distinguish confirmed exercise observations from unverified details. No fabricated timestamps, alert IDs, screenshots, or tool outputs are included. Redact usernames, addresses, credentials, and secrets as needed before publishing.
+Reports distinguish supplied observations, transcribed records, derived output, synthetic tests, and AI illustrations. Synthetic timestamps and illustrative visuals are permitted only with explicit provenance labels; they are never represented as historical observations. Preserve private originals and review public copies for sensitive content and metadata. The existing SOC-001 JPEG/MPO retains camera metadata despite its legacy `.png` name; its accurately named MPO copy retains the same metadata. See the [evidence handling policy](docs/evidence-handling.md).
+
+## Reproduction and validation
+
+The [reproduction guide](docs/reproduction.md) separates offline replay from newly proposed Kali collection commands. The new examples are not historical command transcripts and have not been executed against a live VM during remediation.
+
+From the repository root, with Python 3.10 or newer and Git:
+
+```sh
+python tests/SOC-004/run_tests.py
+python scripts/validate_repository.py
+```
+
+Both checks use the standard library and preserve original files. The [SOC-004 test package](tests/SOC-004/README.md) includes newly preserved synthetic fixtures and tests an optional hardened detector separately. See the [DOC-01–DOC-14 remediation record](docs/documentation-remediation.md) for changes, known evidence gaps, and draft review status.
 
 ## Author
 Jerai Padilla · [GitHub](https://github.com/levetteit)

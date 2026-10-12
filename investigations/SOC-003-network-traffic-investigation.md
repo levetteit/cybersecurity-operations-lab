@@ -57,14 +57,19 @@ SNI identifies the hostname the client requested; it does not independently auth
 
 The observed DNS responses, two TCP connections to port 443, and Client Hello SNI values are **consistent with ordinary Firefox settings-related traffic**. No confirmed indicator of compromise was identified in this limited sample.
 
-**Disposition: Authorized baseline exercise / no confirmed security incident.** This finding applies only to the reviewed 50-packet capture and supplied screenshots. It does not establish that the remote endpoint, all traffic, or the host is free of malicious activity.
+**Disposition: Authorized baseline exercise / no confirmed security incident.** This finding applies only to the reported 50-packet capture as represented by the supplied photographs. It does not establish that the remote endpoint, all traffic, or the host is free of malicious activity.
 
 ## Evidence limitations and handling
 
 - Observations were supplied through photographs of the terminal and Wireshark; the underlying PCAP was not directly available for independent inspection.
 - No full payload review, TLS decryption, destination attribution independent of SNI, or comprehensive threat-intelligence validation was performed.
 - No absolute collection timestamp with timezone or capture-file cryptographic hash was documented.
-- The original PCAP should remain private until reviewed for sensitive content; screenshots may be added to the repository separately with accurate captions and without representing them as unedited digital captures.
+- The original PCAP remains private. Ten processed photographs are already published in the gallery below, with captions; they are not unedited digital screenshots.
+- The VirtualBox NAT VM has outbound Internet access. Connections to public services are visible; this lab is not described as air-gapped.
+
+## Fresh collection
+
+The [newly proposed capture walkthrough](../docs/reproduction.md) records versions, absolute times, exit status and a private PCAP hash, then describes Wireshark analysis. Those values were not recorded for the historical capture and are not backfilled here.
 
 ## Lessons learned
 

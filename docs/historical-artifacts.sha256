@@ -1,0 +1,34 @@
+# New inventory of unchanged non-Markdown historical artifacts at main 2728239bf6f4dd942baf855ef6a9120e9959a256
+# Publication byte integrity only; not a historical acquisition manifest. Paths relative to repo root.
+f4f456b33935e200c10e7224406c2d708a5977779d566abb54b1a7ce6ad49103  SOC-001-authentication-evidence.png
+26df6abc6a3f6df7c452edb82a29f8c38110937c4d5ab9b5de315fc1644f05af  SOC-001-illustrative-reconstruction.png
+ca3c38232932967bdc682e74a16f99029c9676b7196ea8f9b9405821d09b5e57  SOC-002-01-process-discovery.png
+6f79495a47f79421d43bedd5b2f201942da934ba19f5b3925b6b06b1ff499711  SOC-002-02-process-metadata.png
+8b8b308e4d2b3fe84165f468b5729f280d5738942c9a386b09c028b608be6d48  SOC-002-03-process-ancestry.png
+a60c22e7e7beca43d0c2e85ff193efc390f222a9e72ed7fce00c19e8d6864ce8  SOC-002-04-behavioral-analysis.png
+f88899139fa43110812fa4c7f741a18c35b5c9ef31f91d39b1f7d452bab204db  SOC-002-enhanced-original-evidence.zip
+a88ae91f4d3f489a6aa7ff8f9255a72e6195b5d7aae4e71f3351ba781b1c1bca  detections/SOC-004/ssh_detector.py
+af3201df379d468345586d1084a125f8152575f504a9ca427a7885f9e92ce54e  evidence/SOC-003/SOC-003-01-network-interface.png
+51c96fa36d5dd34ff1845216d1120e5024836b7b58161ba2ae78e58fc4479a28  evidence/SOC-003/SOC-003-02-live-packet-capture.png
+4ded099fdaf0f0e5549f36afe23e56dffd049aaba4a137b61c4b918680503bb3  evidence/SOC-003/SOC-003-03-saved-pcap.png
+0ebd3f4322ec043f69eb37fbac69bb10435b8d46f628b74557ebc7f4542ccb14  evidence/SOC-003/SOC-003-03a-packet-list-overview.png
+3874c55ea4756718f931c80969964be30ef06dbd8f4aa2bca487ed111483bf5e  evidence/SOC-003/SOC-003-04-protocol-hierarchy.png
+19db33c6502840ee951a36c06de9b62038fb7e84d12af3d460b7aa80c9c06c8f  evidence/SOC-003/SOC-003-05-tcp-conversations.png
+f1e5d92dcba035027ca74180cb3ec6c3e70e9a0a875a6fc6098ba0290200b560  evidence/SOC-003/SOC-003-06-tls-client-hello.png
+d95330e9845b1f6de823903f60b650c54501eccbc891437327a2aaf346dcf5b7  evidence/SOC-003/SOC-003-06a-tls-client-hello-packet-16.png
+2926a31671d4e21a57e743d38868bbd17400ff41a8f600a3e31807ea35f00878  evidence/SOC-003/SOC-003-07-tcp-stream-details.png
+bf71472c49a10810fa14618e0098b94835b26cc0277a5ee3f59b26e9e5b3c41d  evidence/SOC-003/SOC-003-08-tcp-stream-verification.png
+8fa12b8f92e47987adf1737bb8ac97d981b626ea044b3897776946ff1b689279  evidence/SOC-004/SHA256SUMS.txt
+ad67b758f71d8ca67bd9785fe8a1748f56711ebed96b97f0740983f14f509b02  evidence/SOC-004/original-evidence-validation.json
+80f2ec31ce55674d9576cd93628516adb99e3014a69b40089e272aec03d0244f  evidence/SOC-004/publication-preparation-validation.json
+acc989a0025c5e92b4b6c2f85cdfefebfb838f217b2d9b2cf6ecebe54c31f20f  evidence/SOC-004/ssh-boundary-test-result.log
+2dc00a711e685bfaee2100870d5c4637683201dfd17cab7fb54cfcc632c28b8e  evidence/SOC-004/ssh-boundary-test.log
+3258e919892118402decb75d073020a6cf1b3a0e85393f8803bdd0521027ab1b  evidence/SOC-004/ssh-detection-alert.log
+edf43364c43d0b21eab497051a1c9fb177033985e96e7117c2b2ef7cd5dc2ad9  evidence/SOC-004/ssh-exact-boundary-test-result.log
+3e32bf4654a785b688314a39e4aca35772837e29e989cd0810fe125f0af64274  evidence/SOC-004/ssh-exact-boundary-test.log
+62f164b5f79635497f760846bbe03f7550b7fde0beab0b73c965245f2c856f24  evidence/SOC-004/ssh-first-failure.log
+db3235ec921c06c0bb77b580f106d93b7ebc4d1adce4908c3b2152381ed1587e  evidence/SOC-004/ssh-negative-test-result.log
+d339592639d962a6f83fdc64926f7f9afe016753b41b5868ab3d74d8d368c0d8  evidence/SOC-004/ssh-negative-test.log
+c5e02862d9dbd5a90bd8943487104d0784b13080a78b5e457a561ff98ecebc55  evidence/SOC-004/ssh-repeated-failures.log
+b9605e5c1c4f4a0cb14c3642c5cddea936b6d900599db0879ce35ea8385154c5  evidence/SOC-004/ssh_detector.py
+f113ac49dd8abea277d9acb6967798c87162bafde221262fea9b5cf892f0cd15  evidence/SOC-004/user-reported-sha256-check.txt
